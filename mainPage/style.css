@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+body {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #BFBFBF; 
+    color: #000; 
+    padding: 20px 0; 
+}
+
+header h1 {
+    text-align: center;
+}
+
+.login-button{
+    color: #000; 
+    padding: 12px;
+    margin-right: 24px;
+    border: 0px;
+    background-color: #BFBFBF;
+    font-size: larger;
+}
+
+.fa-home{
+    color: #000;
+    padding: 12px;
+    margin: 16px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    padding: 64px;
+}
+
+.feed-button-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    
+}
+
+.feed-button{
+    padding: 24px;
+    padding-left: 120px;
+    padding-right: 120px;
+    border: none;
+    background-color: #BFBFBF;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 28px;
+    
+}
+
+
+.schedules-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.schedules-text{
+    padding:12px;
+}
+
+.container2{
+    width: 100%;
+    flex-grow: 1;
+}
+
+.schedules-buttons {
+    height: 250px; 
+    overflow: auto; 
+    width: 50%;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+}
+
+.scrollable-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.textbox {
+    background-color: #BFBFBF;
+    padding: 24px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin: 4px;
+    border-radius: 40px;
+    white-space: nowrap;
+}
+
+.graph-image{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+}
+
+.history-button-section{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    float: right;
+}
