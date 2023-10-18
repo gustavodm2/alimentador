@@ -11,21 +11,23 @@
 <body>
     <header>
         <i class="fas fa-home fa-2x"></i>
-        <h1>Alimentador Automático</h1>
+        <h1>ALIMENTADOR AUTOMÁTICO</h1>
         <button class="login-button" onclick="openLoginPopup()">Entrar</button>
     </header>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
     <div id="loginPopup" class="popup">
         <span class="close-button" onclick="closeLoginPopup()">&#10006;</span>
-        <h2>Login</h2>
+        <h2 class="login-text">Login</h2>
         <form>
-            <label for="username">Usuário:</label>
-            <input type="text" id="username" name="username">
+            <label class="username-text" for="username">Usuário:</label>
+            <input class="username-text-box" type="text" id="username" name="username">
             <br>
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password">
+            <label class="password-text" for="password">Senha:</label>
+            <input class="password-text-box" type="password" id="password" name="password">
             <br>
-            <input type="submit" value="Entrar">
+            <div class="submit-text-section">
+            <input class="submit-text" type="submit" value="Entrar">
+            </div>
         </form>
     </div>
 
