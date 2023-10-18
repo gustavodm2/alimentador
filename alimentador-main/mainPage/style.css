@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+body {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #BFBFBF; 
+    color: #000; 
+    padding: 20px 0; 
+}
+
+header h1 {
+    text-align: center;
+}
+
+.login-button{
+    color: #000; 
+    padding: 12px;
+    margin-right: 24px;
+    border: 0px;
+    background-color: #BFBFBF;
+    font-size: larger;
+}
+
+.fa-home{
+    color: #000;
+    padding: 12px;
+    margin: 16px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    padding: 64px;
+}
+
+.feed-button-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46%;
+    
+}
+
+.feed-button{
+    padding: 24px;
+    padding-left: 120px;
+    padding-right: 120px;
+    border: none;
+    background-color: #BFBFBF;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 28px;
+    
+}
+
+
+.schedules-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.schedules-text{
+    padding:12px;
+}
+
+.container2 {
+    display: flex;
+}
+
+.schedules-buttons {
+    height: 250px;
+    overflow: auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+}
+
+.scrollable-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textbox {
+    background-color: #BFBFBF;
+    padding: 24px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin: 4px;
+    border-radius: 40px;
+    white-space: nowrap;
+}
+
+.graph-image {
+    width: 48%;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+}
+
+
+.history-button-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    width: 50%;
+    padding: 16px;
+}
+
+.history-button{
+    padding: 24px;
+    padding-left: 120px;
+    padding-right: 120px;
+    border: none;
+    background-color: #BFBFBF;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.popup{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.close-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
