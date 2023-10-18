@@ -12,22 +12,9 @@
     <header>
         <i class="fas fa-home fa-2x"></i>
         <h1>Alimentador Automático</h1>
-        <button class="login-button" onclick="openLoginPopup()">Entrar</button>
+        <button class="login-button">Entrar</button>
     </header>
-    <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
-    <div id="loginPopup" class="popup">
-        <span class="close-button" onclick="closeLoginPopup()">&#10006;</span>
-        <h2>Login</h2>
-        <form>
-            <label for="username">Usuário:</label>
-            <input type="text" id="username" name="username">
-            <br>
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password">
-            <br>
-            <input type="submit" value="Entrar">
-        </form>
-    </div>
+
     <div class="container">
         <div class="feed-button-section">
             <button class="feed-button">Alimentar</button>
@@ -41,16 +28,17 @@
 
     <div class="container2">
         <div class="graph-image">
-            <img src="\assets\graph.jpg">
+            <img src="\assets\graph.jpg" alt="">
+        </div>
         <div class="schedules-buttons">
             <div class="scrollable-content">
+            </div>
         </div>
+        
     </div>
 
     <div class="history-button-section">
-        <a href="\schedules\index.html">
-        <button class="history-button-text">Ver histórico</button>
-        </a>
+        <button class="history-button">Ver histórico</button>
     </div>
 </body>
 <script src="script.js"></script>
