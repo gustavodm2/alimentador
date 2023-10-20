@@ -3,3 +3,9 @@ CREATE TABLE horarios_alimentados(
              data_hora timestamp
 
 );
+
+CREATE TABLE usuario(
+	usuario VARCHAR(50),
+	senha VARCHAR(40)
+
+);

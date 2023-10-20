@@ -13,14 +13,14 @@
         <a href="/mainPage/index.php">
             <i class="fas fa-home fa-2x"></i>
         </a>
-        <h1>Alimentador Automático</h1>
+        <h1>ALIMENTADOR AUTOMÁTICO</h1>
         <button class="login-button" onclick="openLoginPopup()">Entrar</button>
     </header>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
     <div id="loginPopup" class="popup">
         <span class="close-button" onclick="closeLoginPopup()">&#10006;</span>
         <h2 class="login-text">Login</h2>
-        <form>
+        <form id="login-form">
             <label class="username-text" for="username">Usuário:</label>
             <input class="username-text-box" type="text" id="username" name="username">
             <br>
@@ -28,9 +28,10 @@
             <input class="password-text-box" type="password" id="password" name="password">
             <br>
             <div class="submit-text-section">
-            <input class="submit-text" type="submit" value="Entrar">
+            <button class="submit-text" type="submit">Entrar</button>
             </div>
         </form>
+        <div id="message"></div>
     </div>
     <div class="card-container2">
     <div id="fed-schedules" class="card-container"></div>

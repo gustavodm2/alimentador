@@ -49,8 +49,6 @@ document.getElementById("loginPopup").addEventListener("click", function (event)
     event.stopPropagation();
 })
 
-
-
 function alimentarAgora() {
     // Enviar uma solicitação AJAX para o servidor PHP
     var xhr = new XMLHttpRequest();
@@ -60,9 +58,38 @@ function alimentarAgora() {
             alert("Horário alimentado com sucesso!");
             var horarioAtual = new Date().toLocaleTimeString();
             atualizarHorarioSchedules(horarioAtual);
+            
         }
     };
     xhr.send();
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.getElementById('login-form');
+    const message = document.getElementById('message');
+
+    loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        fetch('/verify.php', {
+            method: 'POST',
+            body: new URLSearchParams({ username, password }),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then(response => response.text())
+        .then(data => {
+            message.innerText = data;
+            if (data === "Login bem-sucedido!") {
+                // Ocultar o botão "Entrar"
+                document.getElementById("loginButton").style.display = "none";
+                // Exibir o nome de usuário no lugar do botão
+                document.getElementById("usernameDisplay").innerText = username;
+            }
+        });
+    });
+});
 
