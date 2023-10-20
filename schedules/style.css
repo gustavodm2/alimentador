@@ -139,3 +139,37 @@ header h1{
     color: white;
     background-color: #BFBFBF;
   }
+  
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+}
+
+.card {
+    flex: 0 0 30%; /* Largura dos cards fixa em 30% */
+    max-width: 26%; /* Largura máxima dos cards */
+    border: 1px solid #ccc;
+    margin: 10px 5px; /* Margem horizontal de 5px e margem vertical de 10px */
+    padding: 10px;
+    background-color: #f0f0f0;
+    box-sizing: border-box; /* Inclui a largura da borda no cálculo de largura */
+}
+
+.card h3 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.card p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.card-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
