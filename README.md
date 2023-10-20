@@ -1,13 +1,12 @@
-## Funcionalidades
+# Alimentador Automático
 
-- Registro e autenticação de usuários.
-- Programação de horários de alimentação para animais de estimação.
-- Armazenamento seguro de dados de usuário e configurações de alimentação no banco de dados PostgreSQL.
-- Interface de usuário amigável e responsiva para configurar o alimentador automático.
-- Execução automática das alimentações programadas.
+
 
 ## Contribuição
-
+- Luiz Eduardo Biermann Picoli
+- Gustavo Denardi Merlugo
+- Julio Sagrilo Cassol
+- Otavio Moreira da Costa
 ---
 ## Funcionalidades
 - [X] Autenticação de usuários.
