@@ -67,6 +67,8 @@ function alimentarAgora() {
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('login-form');
     const message = document.getElementById('message');
+    const headerContent = document.getElementById('headerContent');
+    const loginButton = document.getElementById('loginButton');
 
     loginForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -84,12 +86,12 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             message.innerText = data;
             if (data === "Login bem-sucedido!") {
-                // Ocultar o botão "Entrar"
-                document.getElementById("loginButton").style.display = "none";
-                // Exibir o nome de usuário no lugar do botão
-                document.getElementById("usernameDisplay").innerText = username;
+                loginButton.style.display = "none"; 
+                document.getElementById("usernameDisplay").innerText = `Bem vindo, ${username}`; 
+                document.getElementById("usernameDisplay").classList.remove("hidden"); 
             }
         });
     });
 });
+
 

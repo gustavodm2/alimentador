@@ -18,8 +18,11 @@ header {
     padding: 20px 0; 
 }
 
+
 header h1 {
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-button{
@@ -227,3 +230,16 @@ header h1 {
     color: white;
     background-color: #BFBFBF;
   }
+
+.hidden {
+    display: none;
+}
+
+#usernameDisplay {
+    top: 240px;
+    right: 16px;
+    padding: 16px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+}
+    

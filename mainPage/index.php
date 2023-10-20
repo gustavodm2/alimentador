@@ -13,7 +13,7 @@
         <i class="fas fa-home fa-2x"></i>
         <h1>ALIMENTADOR AUTOMÁTICO</h1>
         <button class="login-button" id="loginButton" onclick="openLoginPopup()">Entrar</button>
-        <span id="usernameDisplay" class="username-display"></span>
+        <span id="usernameDisplay" class="username-display hidden"></span>
 
     </header>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
