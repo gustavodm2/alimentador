@@ -1,6 +1,6 @@
 ## Funcionalidades
 
-- Registro e autenticação de usuários.
+- Autenticação de usuários.
 - Programação de horários de alimentação para animais de estimação.
 - Armazenamento seguro de dados de usuário e configurações de alimentação no banco de dados PostgreSQL.
 - Interface de usuário amigável e responsiva para configurar o alimentador automático.
