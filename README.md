@@ -8,8 +8,10 @@
 
 ## Contribuição
 
-- Luiz Eduardo Biermann Picoli
-- Gustavo Denardi Merlugo
+- Luiz Eduardo Biermann Picoli (Back-end)
+- Gustavo Denardi Merlugo (Front-end)
+- Otavio Moreira da Costa (Arduino)
+- Julio Sagrilo Cassol (??????)
 
 ## Tecnologias e Ferramentas
 
