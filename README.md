@@ -19,7 +19,8 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 - [CSS](https://devdocs.io/css/)
 - [PHP](https://devdocs.io/php/)
 - [JavaScript](https://devdocs.io/javascript/)
-- [PostgresSQL](https://www.postgresql.org)
+- [PostgreSQL](https://www.postgresql.org)
+- [Arduino](https://www.arduino.cc)
   
 ## Referências
 
