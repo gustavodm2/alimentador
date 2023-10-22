@@ -21,7 +21,7 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 - [JavaScript](https://devdocs.io/javascript/)
 - [PostgresSQL](https://www.postgresql.org)
 - 
-## Refercias
+## Referências
 
 > O Projeto é baseado em um protótipo feito na plataforma Figma, que pode ser visualizado [aqui](https://www.figma.com/file/JpwUwtAvpQjZjIcHNNxzis/Alimentador-autom%C3%A1tico?type=design&node-id=0%3A1&mode=design&t=xra4aexDuVPALIWE-1)
 
