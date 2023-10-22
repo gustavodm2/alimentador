@@ -10,7 +10,7 @@
 
 - Luiz Eduardo Biermann Picoli (Back-end)
 - Gustavo Denardi Merlugo (Front-end)
-- Otavio Moreira da Costa (Arduino)
+- Otavio Moreira da Costa (Arduino, AWS)
 - Julio Sagrilo Cassol (??????)
 
 ## Tecnologias e Ferramentas
