@@ -16,7 +16,8 @@
 
 ## Contribuição
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas e enviar solicitações de pull para melhorar este projeto.
+- Luiz Eduardo Biermann Picoli
+- Gustavo Denardi Merlugo
 
 ## Licença
 
