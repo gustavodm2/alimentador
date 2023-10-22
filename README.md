@@ -20,5 +20,14 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 - [PHP](https://devdocs.io/php/)
 - [JavaScript](https://devdocs.io/javascript/)
 - [PostgresSQL](https://www.postgresql.org)
+- 
+## Refercias
+
+> O Projeto é baseado em um protótipo feito na plataforma Figma, que pode ser visualizado [aqui](https://www.figma.com/file/JpwUwtAvpQjZjIcHNNxzis/Alimentador-autom%C3%A1tico?type=design&node-id=0%3A1&mode=design&t=xra4aexDuVPALIWE-1)
+
+> Uma cópia de nosso quadro no trello pode ser visualizada [aqui](https://trello.com/invite/b/cZALrJnQ/ATTI5dc52d045972ef0a31f797fc727cf9522D18F904/pi-iv)
+
+> Uma cópia de nosso artigo via google docs pode ser visualizado [aqui](https://docs.google.com/document/d/1nN44evdMG_xfkwE8CpBq1jCpd9qyIJgT-E4JfJZA8EY/edit?usp=sharing)
+
 
 
