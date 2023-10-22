@@ -6,22 +6,10 @@
 - Interface de usuário amigável e responsiva para configurar o alimentador automático.
 - Execução automática das alimentações programadas.
 
-## Configuração
-
-1. Clone o repositório.
-2. Configure um banco de dados PostgreSQL.
-3. Configure suas credenciais da AWS para hospedar o aplicativo na nuvem.
-4. Configure as variáveis de ambiente necessárias (por exemplo, credenciais do banco de dados e AWS) no arquivo `.env`.
-5. Execute a aplicação com um servidor PHP.
-
 ## Contribuição
 
 - Luiz Eduardo Biermann Picoli
 - Gustavo Denardi Merlugo
-
-## Licença
-
-Este projeto é licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para obter detalhes.
 
 ---
 
