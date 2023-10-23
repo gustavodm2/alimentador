@@ -50,7 +50,6 @@ document.getElementById("loginPopup").addEventListener("click", function (event)
 })
 
 function alimentarAgora() {
-    // Enviar uma solicitação AJAX para o servidor PHP
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "insert_times.php", true);
     xhr.onreadystatechange = function () {

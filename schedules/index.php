@@ -1,6 +1,13 @@
 <?php
 session_start();
 include '../connect.php';
+
+if (isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header('Location: index.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,22 +16,26 @@ include '../connect.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../header.css">
     <title>Alimentador Automático</title>
 </head>
 <body>
-    <header>
-        <a href="/mainPage/index.php">
-            <i class="fas fa-home fa-2x"></i>
-        </a>
+<header>
+        <i class="fas fa-home fa-2x"></i>
+        <div class="page-title">
         <h1>ALIMENTADOR AUTOMÁTICO</h1>
+        </div>
         <?php if (isset($_SESSION['user_id'])) : ?>
-            <span id="usernameDisplay" class="username-display"><?php echo $_SESSION['usuario']; ?></span>
+            <div id="user-info" class="user-info">
+                <span id="usernameDisplay" class="username-display">Bem vindo, <?php echo $_SESSION['usuario']; ?></span>
             <form method="post" action="">
                 <button type="submit" name="logout">Sair</button>
             </form>
+            </div>
         <?php else : ?>
-            <button class="login-button" id="loginButton" onclick="openLoginPopup()">Entrar</button>
+            <span class="login-button" id="loginButton" onclick="openLoginPopup()">Entrar</span>
         <?php endif; ?>
+
     </header>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
     <div id="loginPopup" class="popup">

@@ -5,8 +5,7 @@ CREATE TABLE horarios_alimentados(
 );
 
 CREATE TABLE usuario(
-    id serial PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
 	usuario VARCHAR(50),
 	senha VARCHAR(40)
-
 );
