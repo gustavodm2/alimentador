@@ -85,11 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.text())
         .then(data => {
             message.innerText = data;
-            if (data === "Login bem-sucedido!") {
-                loginButton.style.display = "none"; 
-                document.getElementById("usernameDisplay").innerText = `Bem vindo, ${username}`; 
-                document.getElementById("usernameDisplay").classList.remove("hidden"); 
-            }
+            
         });
     });
 });

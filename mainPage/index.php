@@ -1,3 +1,14 @@
+<?php
+session_start();
+include '../connect.php';
+
+if (isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header('Location: index.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +23,14 @@
     <header>
         <i class="fas fa-home fa-2x"></i>
         <h1>ALIMENTADOR AUTOMÁTICO</h1>
-        <button class="login-button" id="loginButton" onclick="openLoginPopup()">Entrar</button>
-        <span id="usernameDisplay" class="username-display hidden"></span>
+        <?php if (isset($_SESSION['user_id'])) : ?>
+            <span id="usernameDisplay" class="username-display"><?php echo $_SESSION['usuario']; ?></span>
+            <form method="post" action="">
+                <button type="submit" name="logout">Sair</button>
+            </form>
+        <?php else : ?>
+            <button class="login-button" id="loginButton" onclick="openLoginPopup()">Entrar</button>
+        <?php endif; ?>
 
     </header>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -10,6 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    $user = $stmt->fetch();
 
    if ($user) {
+       $_SESSION['user_id'] = $user['id'];
+       $_SESSION['usuario'] = $user['usuario'];  
        echo "Login bem-sucedido!";
    } else {
        echo "Usuário ou senha incorretos.";
@@ -17,4 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
    echo "Erro no processamento do formulário.";
 }
+
+
+
 ?>

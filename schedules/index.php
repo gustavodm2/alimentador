@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+include '../connect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +17,14 @@
             <i class="fas fa-home fa-2x"></i>
         </a>
         <h1>ALIMENTADOR AUTOMÁTICO</h1>
-        <button class="login-button" onclick="openLoginPopup()">Entrar</button>
+        <?php if (isset($_SESSION['user_id'])) : ?>
+            <span id="usernameDisplay" class="username-display"><?php echo $_SESSION['usuario']; ?></span>
+            <form method="post" action="">
+                <button type="submit" name="logout">Sair</button>
+            </form>
+        <?php else : ?>
+            <button class="login-button" id="loginButton" onclick="openLoginPopup()">Entrar</button>
+        <?php endif; ?>
     </header>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
     <div id="loginPopup" class="popup">
