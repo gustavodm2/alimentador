@@ -19,10 +19,10 @@
 
 ## Contribuição
 
-- Luiz Eduardo Biermann Picoli (Back-end)
-- Gustavo Denardi Merlugo (Front-end)
-- Otavio Moreira da Costa (Arduino, AWS)
-- Julio Sagrilo Cassol (Artigo)
+- Luiz Eduardo Biermann Picoli (*Back-end*, Front-end)
+- Gustavo Denardi Merlugo (*Front-end*, Back-end)
+- Otavio Moreira da Costa (*Arduino, AWS*, Back-end)
+- Julio Sagrilo Cassol (*Artigo*)
 
 ## Tecnologias e Ferramentas
 
