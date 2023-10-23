@@ -23,6 +23,7 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 - [JavaScript](https://devdocs.io/javascript/)
 - [PostgreSQL](https://www.postgresql.org)
 - [Arduino](https://www.arduino.cc)
+- [AWS](https://aws.amazon.com/pt/)
   
 ## Referências
 
