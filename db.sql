@@ -9,3 +9,8 @@ CREATE TABLE usuario(
 	usuario VARCHAR(50),
 	senha VARCHAR(999)
 );
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+INSERT INTO usuario (usuario, senha)
+VALUES ('luiz', ENCODE(DIGEST('123', 'sha256'), 'hex'));

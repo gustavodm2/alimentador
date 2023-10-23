@@ -31,7 +31,10 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
     });
 
     timeInput.addEventListener("change", () => {
+        const selectedTime = timeInput.value;
         newTextbox.replaceChild(document.createTextNode(timeInput.value), timeInput);
+    
+        inserirHorarioNoBanco(selectedTime);
     });
 });
 
@@ -47,4 +50,12 @@ function alimentarAgora() {
         }
     };
     xhr.send();
+}
+
+function inserirHorarioNoBanco(selectedTime) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "inserir_horario.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    const data = "horario=" + encodeURIComponent(selectedTime);
+    xhr.send(data);
 }

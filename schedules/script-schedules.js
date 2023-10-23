@@ -19,6 +19,10 @@ function mostrarHorariosSelecionados(times) {
         const cardHorario = document.createElement('p');
         cardHorario.innerHTML = horario;
 
+        const cardData = document.createElement('p');
+        cardData.innerHTML = dataHora.toLocaleString('pt-BR').split(" ")[0];
+
+        card.appendChild(cardData);
         card.appendChild(cardDia);
         card.appendChild(cardHorario);
 
