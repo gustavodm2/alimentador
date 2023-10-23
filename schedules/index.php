@@ -16,12 +16,14 @@ if (isset($_POST['logout'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="../header&login.css">
     <title>Alimentador Automático</title>
 </head>
 <body>
 <header>
+        <a href="\mainPage\index.php">
         <i class="fas fa-home fa-2x"></i>
+        </a>
         <div class="page-title">
         <h1>ALIMENTADOR AUTOMÁTICO</h1>
         </div>
@@ -58,7 +60,7 @@ if (isset($_POST['logout'])) {
     <div id="fed-schedules" class="card-container"></div>
     </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script-schedules.js"></script>
     <script src="\script.js"></script>
 </body>
 </html>
