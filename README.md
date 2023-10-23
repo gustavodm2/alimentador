@@ -42,7 +42,7 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 
 > Uma cópia de nosso quadro no trello pode ser visualizada [aqui](https://trello.com/invite/b/cZALrJnQ/ATTI5dc52d045972ef0a31f797fc727cf9522D18F904/pi-iv)
 
-> Uma cópia de nosso artigo via google docs pode ser visualizado [aqui](https://docs.google.com/document/d/1nN44evdMG_xfkwE8CpBq1jCpd9qyIJgT-E4JfJZA8EY/edit?usp=sharing)
+> Uma cópia de nosso artigo via google docs pode ser visualizado [aqui](https://docs.google.com/document/d/1AZrpjIm3fBTlHVqM_GPdxlpXDGuKT6ZB2ytKLrrOPbw/edit?usp=sharing)
 
 
 
