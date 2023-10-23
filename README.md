@@ -19,10 +19,10 @@
 
 ## Contribuição
 
-- Luiz Eduardo Biermann Picoli (Back-end)
-- Gustavo Denardi Merlugo (Front-end)
-- Otavio Moreira da Costa (Arduino, AWS)
-- Julio Sagrilo Cassol (??????)
+- Luiz Eduardo Biermann Picoli (**Back-end**, Front-end)
+- Gustavo Denardi Merlugo (**Front-end**, Back-end)
+- Otavio Moreira da Costa (**Arduino, AWS**, Back-end)
+- Julio Sagrilo Cassol (**Artigo, Montagem**)
 
 ## Tecnologias e Ferramentas
 
@@ -35,6 +35,9 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 - [PostgreSQL](https://www.postgresql.org)
 - [Arduino](https://www.arduino.cc)
 - [AWS](https://aws.amazon.com/pt/)
+- [AWS RDS](https://aws.amazon.com/pt/rds/)
+- [Terraform](https://www.terraform.io)
+- [MQTT](https://mqtt.org)
   
 ## Referências
 
@@ -43,6 +46,3 @@ As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 > Uma cópia de nosso quadro no trello pode ser visualizada [aqui](https://trello.com/invite/b/cZALrJnQ/ATTI5dc52d045972ef0a31f797fc727cf9522D18F904/pi-iv)
 
 > Uma cópia de nosso artigo via google docs pode ser visualizado [aqui](https://docs.google.com/document/d/1AZrpjIm3fBTlHVqM_GPdxlpXDGuKT6ZB2ytKLrrOPbw/edit?usp=sharing)
-
-
-
