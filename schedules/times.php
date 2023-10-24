@@ -1,16 +1,20 @@
 <?php
 include '../connect.php';
 
-$sql = "SELECT * FROM horarios_alimentados";
-$result = $pdo->query($sql);
+if (isset($_SESSION['user_id'])){
+    $sql = "SELECT * FROM horarios_alimentados";
+    $result = $pdo->query($sql);
 
-$times = array();
+    $times = array();
 
-while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    array_push($times, $row);
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        array_push($times, $row);
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($times);
+}else{
+    echo 'Entre com sua conta para ver o histórico';
 }
-
-header('Content-Type: application/json');
-echo json_encode($times);
 ?>
 

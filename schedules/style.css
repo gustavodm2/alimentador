@@ -21,6 +21,7 @@ body{
 .card {
     flex: 0 0 30%; 
     max-width: 26vh; 
+    min-width: 26vh; 
     border: 1px solid #ccc;
     margin: 10px 5px;  
     padding: 10px;
@@ -42,7 +43,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 10rem;
+    padding-left: 18rem;
     padding-right: 10rem;
 }
 
