@@ -24,7 +24,7 @@ if (isset($_POST['logout'])) {
     <header>
         <i class="fas fa-bars fa-2x" id="menu-icon"></i>
         <div class="page-title">
-        <h1>ALIMENTADOR AUTOMÁTICO</h1>
+        <h1>BEST FEEDER</h1>
         </div>
         <?php if (isset($_SESSION['user_id'])) : ?>
             <div id="user-info" class="user-info">
@@ -42,7 +42,7 @@ if (isset($_POST['logout'])) {
         <li><a class="sidebar-link" href="\mainPage\index.php">Página Inicial</a></li>
         <li><a class="sidebar-link" href="\schedules\index.php">Histórico</a></li>
         <li><a class="sidebar-link" href="\schedules-info\index.php">Informações horário</a></li>
-        <li><a class="sidebar-link" href="\quem-somos\index.php">Quem somos</a></li>
+        <li><a class="sidebar-link" id="quem-somos" href="\about-us\index.php">Quem somos</a></li>
     </ul>
     </div>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
@@ -77,7 +77,7 @@ if (isset($_POST['logout'])) {
 
     <div class="container2">
         <div class="graph-image">
-            cu negro
+
         </div>
         <div class="schedules-buttons">
             <div class="scrollable-content">
@@ -86,7 +86,31 @@ if (isset($_POST['logout'])) {
         </div>
         
     </div>
+    <footer>
+            <div class="Atendimento">
+                Atendimento:
+                <div class="Itens">
+                    sac@betterfeeder.com.br
+                    <span style="font-family: 'Material Icons', sans-serif;"></span>
+                </div>
+            </div>
+            <div class="Ajuda">
+                Ajuda:
+                <div class="Itens">
+                    <div class="Perguntas Frequentes">
+                        Perguntas Frequentes
+                        <span style="font-family: 'Material Icons', sans-serif;"></span>
+                    </div>
+                    <div class="Quem Somos">
+                        Quem Somos
+                        <span style="font-family: 'Material Icons', sans-serif;"></span>
+                    </div>       
+                    <span style="font-family: 'Material Icons', sans-serif;"></span>
+                </div>
 
+                </div>
+            </div>
+        </footer> 
     
     
 </body>

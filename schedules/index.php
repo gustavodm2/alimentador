@@ -23,7 +23,7 @@ if (isset($_POST['logout'])) {
 <header>
         <i class="fas fa-bars fa-2x" id="menu-icon"></i>
         <div class="page-title">
-        <h1>ALIMENTADOR AUTOMÁTICO</h1>
+        <h1>BEST FEEDER</h1>
         </div>
         <?php if (isset($_SESSION['user_id'])) : ?>
             <div id="user-info" class="user-info">
@@ -42,9 +42,7 @@ if (isset($_POST['logout'])) {
         <li><a class="sidebar-link" href="\mainPage\index.php">Página Inicial</a></li>
         <li><a class="sidebar-link" href="\schedules\index.php">Histórico</a></li>
         <li><a class="sidebar-link" href="\schedules-info\index.php">Informações horário</a></li>
-        <div class="quem-somos">
-        <li><a class="sidebar-link" href="\quem-somos\index.php">Quem somos</a></li>
-        </div>
+        <li><a class="sidebar-link" id="quem-somos" href="\about-us\index.php">Quem somos</a></li>
     </ul>
     </div>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
@@ -70,6 +68,7 @@ if (isset($_POST['logout'])) {
     <div class="card-container2">
     <div id="fed-schedules" class="card-container"></div>
     </div>
+    
     <script src="script-schedules.js"></script>
     <script src="\script.js"></script>
 </body>

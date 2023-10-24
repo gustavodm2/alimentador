@@ -13,15 +13,14 @@ if (isset($_POST['logout'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../header&login.css">
-    <title>Alimentador Automatico</title>
+    <title>Alimentador Automático</title>
 </head>
 <body>
-    <header>
+<header>
         <i class="fas fa-bars fa-2x" id="menu-icon"></i>
         <div class="page-title">
         <h1>BEST FEEDER</h1>
@@ -30,19 +29,20 @@ if (isset($_POST['logout'])) {
             <div id="user-info" class="user-info">
                 <span id="usernameDisplay" class="username-display">Bem vindo, <?php echo $_SESSION['usuario']; ?></span>
             <form method="post" action="">
-                <button type="submit" name="logout" method="post">Sair</button>
+                <button type="submit" name="logout">Sair</button>
             </form>
             </div>
         <?php else : ?>
             <span class="login-button" id="loginButton" onclick="openLoginPopup()">Entrar</span>
         <?php endif; ?>
+
     </header>
     <div id="sidebar" class="sidebar">
     <ul>
         <li><a class="sidebar-link" href="\mainPage\index.php">Página Inicial</a></li>
         <li><a class="sidebar-link" href="\schedules\index.php">Histórico</a></li>
         <li><a class="sidebar-link" href="\schedules-info\index.php">Informações horário</a></li>
-        <li><a class="sidebar-link" id="quem-somos" href="\about-us\index.php">Quem somos</a></li> 
+        <li><a class="sidebar-link" id="quem-somos" href="\about-us\index.php">Quem somos</a></li>
     </ul>
     </div>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
@@ -57,19 +57,28 @@ if (isset($_POST['logout'])) {
             <input class="password-text-box" type="password" id="password" name="password">
             <br>
             <div class="submit-text-section">
-            <button class="submit-text" type="submit" method="post">Entrar</button>
+            <button class="submit-text" type="submit">Entrar</button>
             </div>
         </form>
-        <div id="message"></div>
         </div>
-        <h2 class="card-future-schedule-title">Horários programados</h2>
-        <div class="card-container2">
-        
-        <div class="card-container"></div>
-        </div>
-        </div>
+        <div class="box">
+            <div class="contact-us">
+                <p><h1>Quem Somos - Best Feeder</h1>
     
-    </body>
+    <p>A <strong>Best Feeder</strong> é apaixonada por facilitar a vida dos donos de animais de estimação. Nossa missão é simplificar a alimentação de animais de estimação, proporcionando confiabilidade e inovação.</p>
+
+    <h2>Inovação e Qualidade</h2>
+    <p>Nossa equipe se dedica a criar produtos de alta qualidade e durabilidade. Priorizamos a inovação, utilizando tecnologias de ponta para tornar a vida dos tutores mais fácil.</p>
+
+    <h2>Atendimento ao Cliente de Excelência</h2>
+    <p>Estamos aqui para você. Oferecemos um suporte excepcional, garantindo que você e seu animal de estimação tenham a melhor experiência possível.</p>
+
+    <p>Na <strong>Best Feeder</strong>, unimos tecnologia e paixão por animais para melhorar a vida de tutores de pets. Junte-se a nós e experimente a conveniência dos nossos alimentadores automáticos.</p></p>
+                <p>Agradecemos pelo interesse e pelo apoio. Estamos ansiosos para ouvir de você!</p>
+            </div>
+        <div id="message"></div>
+    </div>
+    
     <script src="\script.js"></script>
-    <script src="script.js"></script>
-    </html>
+</body>
+</html>

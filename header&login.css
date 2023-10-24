@@ -1,3 +1,6 @@
+body{
+    overflow-x: hidden;
+}
 
 header {
     display: flex;
@@ -203,3 +206,37 @@ button[name="logout"] {
     transition: 0.5;
 }
 
+#quem-somos{
+    position: absolute;
+    bottom: 60px;
+    width: 84%;
+    text-align: center;
+}
+
+#quem-somos a {
+    display: inline-block;
+}
+
+footer{
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    background-color: #393939;
+    color: rgba(217, 217, 217, 1);
+    padding-left: 15px;
+    padding-top: 15px;
+    gap: 50px;
+    font-size: 30;
+    font-weight: 700;
+  }
+
+  .Itens{
+  margin-top: 10px;
+  font-weight: 100;
+  }
+  
+  .Itens div{
+  margin-bottom: 10px;
+  }
