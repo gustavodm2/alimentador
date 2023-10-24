@@ -28,6 +28,11 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
 
     clockIcon.addEventListener("click", () => {
         timeInput.style.display = "block";
+        timeInput.addEventListener("change", () => {
+            const selectedTime = timeInput.value;
+            newTextbox.replaceChild(document.createTextNode(selectedTime), timeInput);
+            alimentarAgora(newTextbox); // Salvar o horário inserido no banco de dados
+        });
     });
 
     timeInput.addEventListener("change", () => {
@@ -38,24 +43,37 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
     });
 });
 
-function alimentarAgora() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "insert_times.php", true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            alert("Horário alimentado com sucesso!");
-            var horarioAtual = new Date().toLocaleTimeString();
-            atualizarHorarioSchedules(horarioAtual);
-            
-        }
-    };
-    xhr.send();
-}
+function alimentarAgora(newTextbox) {
+    const timeInput = newTextbox.querySelector("input[type='time']");
+    const selectedTime = timeInput.value;
 
-function inserirHorarioNoBanco(selectedTime) {
-    const xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.open("POST", "inserir_horario.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     const data = "horario=" + encodeURIComponent(selectedTime);
     xhr.send(data);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            alert("Horário inserido com sucesso!");
+            atualizarHorarioSchedules(selectedTime);
+        }
+    };
 }
+
+
+function inserirHorarioNoBanco(selectedTime) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "insert_times.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    const data = "horario=" + encodeURIComponent(selectedTime);
+    xhr.send(data);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            alert("Horário inserido com sucesso!");
+        } else {
+            alert("Erro ao inserir horário no banco de dados.");
+        }
+    };
+}
+
+console.log("Hora selecionada: " + selectedTime);
