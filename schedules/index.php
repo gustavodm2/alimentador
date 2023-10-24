@@ -21,9 +21,7 @@ if (isset($_POST['logout'])) {
 </head>
 <body>
 <header>
-        <a href="\mainPage\index.php">
-        <i class="fas fa-home fa-2x"></i>
-        </a>
+        <i class="fas fa-bars fa-2x" id="menu-icon"></i>
         <div class="page-title">
         <h1>ALIMENTADOR AUTOMÁTICO</h1>
         </div>
@@ -39,6 +37,13 @@ if (isset($_POST['logout'])) {
         <?php endif; ?>
 
     </header>
+    <div id="sidebar" class="sidebar">
+    <ul>
+        <li><a href="\mainPage\index.php">Página Inicial</a></li>
+        <li><a href="\schedules\index.php">Histórico</a></li>
+        <li><a href="\schedules-info\index.php">Informações horario</a></li>
+    </ul>
+    </div>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
     <div id="loginPopup" class="popup">
         <span class="close-button" onclick="closeLoginPopup()">&#10006;</span>

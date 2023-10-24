@@ -36,6 +36,7 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
 
     const submitButton = document.createElement("button");
     submitButton.innerText = "Submit";
+    submitButton.classList.add("submit-button");
     newTextbox.appendChild(submitButton);
 
     submitButton.addEventListener("click", () => {
@@ -76,4 +77,5 @@ function inserirHorarioNoBanco(selectedDateTime) {
     const data = "data=" + encodeURIComponent(selectedDateTime);
     xhr.send(data);
 }
+
 

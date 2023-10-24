@@ -59,36 +59,11 @@ if (isset($_POST['logout'])) {
             <button class="submit-text" type="submit" method="post">Entrar</button>
             </div>
         </form>
+        <div id="fed-schedules" class="schedules">
+    </div>
         <div id="message"></div>
     </div>
-
-    <div class="container">
-        <div class="feed-button-section">
-        <button class="feed-button" method="post" onclick="alimentarAgora()">Alimentar Agora</button>
-
-        </div>
-
-        <div class="schedules-section">
-            <h1 class="schedules-text">Horários:</h1>
-            <i class="fa fa-plus fa-lg" method="post"></i>
-        </div>
-    </div>
-
-    <div class="container2">
-        <div class="graph-image">
-            <img src="\assets\graph.jpg" alt="">
-        </div>
-        <div class="schedules-buttons">
-            <div class="scrollable-content">
-
-            </div>
-        </div>
-        
-    </div>
-
-    
-    
-</body>
-<script src="\script.js"></script>
-<script src="script-mainPage.js"></script>
-</html>
+    </body>
+    <script src="\script.js"></script>
+    <script src="script.js"></script>
+    </html>

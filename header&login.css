@@ -1,3 +1,4 @@
+
 header {
     display: flex;
     align-items: center;
@@ -147,4 +148,39 @@ button[name="logout"] {
 
 .hidden {
     display: none;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.sidebar li {
+    padding: 20px 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+#menu-icon {
+    cursor: pointer;
+    padding-left: 18px;
 }
