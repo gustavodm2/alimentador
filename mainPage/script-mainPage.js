@@ -15,7 +15,7 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
     const timeInput = document.createElement("input");
     timeInput.type = "time";
     timeInput.style.display = "none"; 
-
+  
     newTextbox.appendChild(clockIcon);
     newTextbox.appendChild(timeInput);
     newTextbox.appendChild(trashIcon);
@@ -28,52 +28,39 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
 
     clockIcon.addEventListener("click", () => {
         timeInput.style.display = "block";
-        timeInput.addEventListener("change", () => {
-            const selectedTime = timeInput.value;
-            newTextbox.replaceChild(document.createTextNode(selectedTime), timeInput);
-            alimentarAgora(newTextbox); // Salvar o horário inserido no banco de dados
-        });
     });
 
     timeInput.addEventListener("change", () => {
         const selectedTime = timeInput.value;
         newTextbox.replaceChild(document.createTextNode(timeInput.value), timeInput);
-    
+        console.log(selectedTime);
         inserirHorarioNoBanco(selectedTime);
     });
 });
 
-function alimentarAgora(newTextbox) {
-    const timeInput = newTextbox.querySelector("input[type='time']");
-    const selectedTime = timeInput.value;
-
+function alimentarAgora() {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "inserir_horario.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    const data = "horario=" + encodeURIComponent(selectedTime);
-    xhr.send(data);
+    xhr.open("GET", "insert_times.php", true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            alert("Horário inserido com sucesso!");
-            atualizarHorarioSchedules(selectedTime);
+            alert("Horário alimentado com sucesso!");
+            var horarioAtual = new Date().toLocaleTimeString();
+            atualizarHorarioSchedules(horarioAtual);
+            
         }
     };
+    xhr.send();
 }
-
-
 function inserirHorarioNoBanco(selectedTime) {
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "insert_times.php", true);
+    xhr.open("POST", "insert_times2.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    const data = "horario=" + encodeURIComponent(selectedTime);
-    xhr.send(data);
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            alert("Horário inserido com sucesso!");
-        } else {
-            alert("Erro ao inserir horário no banco de dados.");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
         }
     };
-}
 
-console.log("Hora selecionada: " + selectedTime);
+    const data = "data=" + encodeURIComponent(selectedTime);
+    xhr.send(data);
+}

@@ -1,13 +1,13 @@
 CREATE TABLE horarios_alimentados(
-             id SERIAL PRIMARY KEY,
-             data_hora timestamp
-
+            id SERIAL PRIMARY KEY,
+            data_hora timestamp
+            hora time
 );
 
 CREATE TABLE usuario(
-    id SERIAL PRIMARY KEY,
-	usuario VARCHAR(50),
-	senha VARCHAR(999)
+            id SERIAL PRIMARY KEY,
+	        usuario VARCHAR(50),
+	        senha VARCHAR(999)
 );
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;

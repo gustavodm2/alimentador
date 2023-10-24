@@ -43,7 +43,7 @@ if (isset($_POST['logout'])) {
     <div id="loginPopup" class="popup">
         <span class="close-button" onclick="closeLoginPopup()">&#10006;</span>
         <h2 class="login-text">Login</h2>
-        <form id="login-form">
+        <form id="login-form" method="post">
             <label class="username-text" for="username">Usuário:</label>
             <input class="username-text-box" type="text" id="username" name="username">
             <br>

@@ -12,21 +12,5 @@ try {
 }
 
 
-if (isset($_POST['horario'])) {
-    $horario = $_POST['horario'];
-
-    $pdo = new PDO("pgsql:host=$host;dbname=$database", $username, $password);
-
-    $stmt = $pdo->prepare("INSERT INTO horarios_alimentados (data_hora) VALUES (:horario)");
-    $stmt->bindParam(':horario', $horario);
-    $stmt->execute();
-
-    $pdo = null;
-
-    echo "Horário inserido com sucesso!";
-} else {
-    echo "Erro: Horário não foi recebido.";
-}
-
 $pdo = null;
 ?>

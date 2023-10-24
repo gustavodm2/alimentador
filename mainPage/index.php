@@ -22,7 +22,7 @@ if (isset($_POST['logout'])) {
 </head>
 <body>
     <header>
-        <i class="fas fa-home fa-2x"></i>
+        <i class="fas fa-home fa-2x" method="post"></i>
         <div class="page-title">
         <h1>ALIMENTADOR AUTOMÁTICO</h1>
         </div>
@@ -30,7 +30,7 @@ if (isset($_POST['logout'])) {
             <div id="user-info" class="user-info">
                 <span id="usernameDisplay" class="username-display">Bem vindo, <?php echo $_SESSION['usuario']; ?></span>
             <form method="post" action="">
-                <button type="submit" name="logout">Sair</button>
+                <button type="submit" name="logout" method="post">Sair</button>
             </form>
             </div>
         <?php else : ?>
@@ -49,7 +49,7 @@ if (isset($_POST['logout'])) {
             <input class="password-text-box" type="password" id="password" name="password">
             <br>
             <div class="submit-text-section">
-            <button class="submit-text" type="submit">Entrar</button>
+            <button class="submit-text" type="submit" method="post">Entrar</button>
             </div>
         </form>
         <div id="message"></div>
@@ -57,13 +57,13 @@ if (isset($_POST['logout'])) {
 
     <div class="container">
         <div class="feed-button-section">
-        <button class="feed-button" onclick="alimentarAgora()">Alimentar Agora</button>
+        <button class="feed-button" method="post" onclick="alimentarAgora()">Alimentar Agora</button>
 
         </div>
 
         <div class="schedules-section">
             <h1 class="schedules-text">Horários:</h1>
-            <i class="fa fa-plus fa-lg"></i>
+            <i class="fa fa-plus fa-lg" method="post"></i>
         </div>
     </div>
 
@@ -80,7 +80,7 @@ if (isset($_POST['logout'])) {
 
     <div class="history-button-section">
         <a href="\schedules\index.php">
-        <button class="history-button">Ver histórico</button>
+        <button class="history-button" method="post">Ver histórico</button>
         </a>
     </div>
 </body>
