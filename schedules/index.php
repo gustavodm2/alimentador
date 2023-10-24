@@ -42,6 +42,9 @@ if (isset($_POST['logout'])) {
         <li><a class="sidebar-link" href="\mainPage\index.php">Página Inicial</a></li>
         <li><a class="sidebar-link" href="\schedules\index.php">Histórico</a></li>
         <li><a class="sidebar-link" href="\schedules-info\index.php">Informações horário</a></li>
+        <div class="quem-somos">
+        <li><a class="sidebar-link" href="\quem-somos\index.php">Quem somos</a></li>
+        </div>
     </ul>
     </div>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
