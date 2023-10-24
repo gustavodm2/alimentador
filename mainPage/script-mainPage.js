@@ -77,7 +77,7 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
         // Alterne a escolha do usuário (true/false) e atualize o atributo de dados
         const currentRepeatValue = newTextbox.dataset.repeat;
         newTextbox.dataset.repeat = currentRepeatValue === "true" ? "false" : "true";
-
+    
         // Atualize o texto do botão com base na escolha do usuário
         repeatButton.innerText = newTextbox.dataset.repeat === "true" ? "Repetir Diariamente" : "Não Repetir Diariamente";
     });
