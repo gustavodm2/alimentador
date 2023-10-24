@@ -76,9 +76,23 @@ if (isset($_POST['logout'])) {
     </div>
 
     <div class="container2">
-        <div class="graph-image">
-
+    <div class="alarm-container">
+    <h2>Despertador</h2>
+    <form id="add-alarm-form">
+        <div class="form-group">
+            <label for="alarm-time">Horário do alarme:</label>
+            <input type="time" id="alarm-time" name="alarm-time">
         </div>
+        <div class="form-group">
+            <label for="repeat-daily">Repetir diariamente:</label>
+            <input type="checkbox" id="repeat-daily" name="repeat-daily">
+        </div>
+        <button class="add-alarm" type="button" id="add-alarm-button">Adicionar Alarme</button>
+    </form>
+    <div class="alarm-list">
+        <!-- Aqui, você pode listar os alarmes programados -->
+    </div>
+</div>
         <div class="schedules-buttons">
             <div class="scrollable-content">
 

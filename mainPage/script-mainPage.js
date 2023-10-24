@@ -89,3 +89,20 @@ function inserirHorarioNoBanco(selectedDateTime) {
     const data = "data=" + encodeURIComponent(selectedDateTime);
     xhr.send(data);
 }
+
+document.getElementById('add-alarm-button').addEventListener('click', function() {
+    const alarmTime = document.getElementById('alarm-time').value;
+    const repeatDaily = document.getElementById('repeat-daily').checked;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "insert_alarm.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.send(`alarm-time=${alarmTime}&repeat-daily=${repeatDaily}`);
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            alert("Alarme adicionado com sucesso.");
+        }
+    };
+});
