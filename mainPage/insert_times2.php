@@ -5,7 +5,7 @@ date_default_timezone_set('America/Sao_Paulo');
 if(isset($_POST['data'])) {
     try {
         $dataHora = $_POST['data'];
-        $query = "INSERT INTO horarios_alimentados (hora) VALUES (?)";
+        $query = "INSERT INTO horarios_alimentados (data_hora) VALUES (?)";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$dataHora]);
         echo "Success"; 

@@ -1,7 +1,6 @@
 CREATE TABLE horarios_alimentados(
             id SERIAL PRIMARY KEY,
             data_hora timestamp
-            hora time
 );
 
 CREATE TABLE usuario(
@@ -13,4 +12,4 @@ CREATE TABLE usuario(
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 INSERT INTO usuario (usuario, senha)
-VALUES ('luiz', ENCODE(DIGEST('123', 'sha256'), 'hex'));
+VALUES ('user aqui', ENCODE(DIGEST('senha aqui', 'sha256'), 'hex'));

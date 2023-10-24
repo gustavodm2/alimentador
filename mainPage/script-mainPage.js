@@ -6,17 +6,20 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
 
     const clockIcon = document.createElement("i");
     clockIcon.className = "fas fa-clock";
-    clockIcon.style.padding = "12px"; 
+    clockIcon.style.padding = "12px";
 
     const trashIcon = document.createElement("i");
     trashIcon.className = "fas fa-trash";
-    trashIcon.style.padding = "12px"; 
+    trashIcon.style.padding = "12px";
+
+    const dateInput = document.createElement("input");
+    dateInput.type = "date";
 
     const timeInput = document.createElement("input");
     timeInput.type = "time";
-    timeInput.style.display = "none"; 
-  
+
     newTextbox.appendChild(clockIcon);
+    newTextbox.appendChild(dateInput);
     newTextbox.appendChild(timeInput);
     newTextbox.appendChild(trashIcon);
 
@@ -27,20 +30,29 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
     });
 
     clockIcon.addEventListener("click", () => {
+        dateInput.style.display = "block";
         timeInput.style.display = "block";
     });
 
-    timeInput.addEventListener("change", () => {
-        const selectedTime = timeInput.value;
-        newTextbox.replaceChild(document.createTextNode(timeInput.value), timeInput);
-        console.log(selectedTime);
-        inserirHorarioNoBanco(selectedTime);
+    const submitButton = document.createElement("button");
+    submitButton.innerText = "Submit";
+    newTextbox.appendChild(submitButton);
+
+    submitButton.addEventListener("click", () => {
+        if (dateInput.value && timeInput.value) {
+            const selectedDateTime = `${dateInput.value} ${timeInput.value}`;
+            newTextbox.replaceWith(selectedDateTime);
+            console.log(selectedDateTime);
+            inserirHorarioNoBanco(selectedDateTime);
+        }
     });
 });
 
+
+
 function alimentarAgora() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "insert_times.php", true);
+    xhr.open("POST", "insert_times.php", true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             alert("Horário alimentado com sucesso!");
@@ -51,7 +63,7 @@ function alimentarAgora() {
     };
     xhr.send();
 }
-function inserirHorarioNoBanco(selectedTime) {
+function inserirHorarioNoBanco(selectedDateTime) {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "insert_times2.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -61,6 +73,7 @@ function inserirHorarioNoBanco(selectedTime) {
         }
     };
 
-    const data = "data=" + encodeURIComponent(selectedTime);
+    const data = "data=" + encodeURIComponent(selectedDateTime);
     xhr.send(data);
 }
+

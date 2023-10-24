@@ -73,6 +73,7 @@ if (isset($_POST['logout'])) {
         </div>
         <div class="schedules-buttons">
             <div class="scrollable-content">
+
             </div>
         </div>
         
