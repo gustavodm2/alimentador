@@ -41,7 +41,7 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
 
     submitButton.addEventListener("click", () => {
         const selectedDate = new Date(`${dateInput.value} ${timeInput.value}`);
-        
+
         if (selectedDate <= now) {
             alert("Horário deve ser maior que o atual.");
         } else if (dateInput.value && timeInput.value) {
@@ -49,6 +49,16 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
             newTextbox.replaceWith(selectedDateTime);
             console.log(selectedDateTime);
             inserirHorarioNoBanco(selectedDateTime);
+
+            const popup2 = document.createElement("div");
+            popup2.innerText = "Horário programado";
+            popup2.className = "popup2";
+            
+            document.body.appendChild(popup2);
+            
+            setTimeout(() => {
+                document.body.removeChild(popup2);
+            }, 2000); 
         }
     });
 });

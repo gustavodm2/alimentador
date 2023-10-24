@@ -43,7 +43,9 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    width: 70%;
+    max-width: 70%;
+    padding-left: 17rem;
 }
 
 

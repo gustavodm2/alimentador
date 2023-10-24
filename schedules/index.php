@@ -39,9 +39,9 @@ if (isset($_POST['logout'])) {
     </header>
     <div id="sidebar" class="sidebar">
     <ul>
-        <li><a href="\mainPage\index.php">Página Inicial</a></li>
-        <li><a href="\schedules\index.php">Histórico</a></li>
-        <li><a href="\schedules-info\index.php">Informações horario</a></li>
+        <li><a class="sidebar-link" href="\mainPage\index.php">Página Inicial</a></li>
+        <li><a class="sidebar-link" href="\schedules\index.php">Histórico</a></li>
+        <li><a class="sidebar-link" href="\schedules-info\index.php">Informações horário</a></li>
     </ul>
     </div>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
