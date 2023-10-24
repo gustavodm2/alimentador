@@ -39,9 +39,9 @@ if (isset($_POST['logout'])) {
     </header>
     <div id="sidebar" class="sidebar">
     <ul>
-        <li><a href="\mainPage\index.php">Página Inicial</a></li>
-        <li><a href="\schedules\index.php">Histórico</a></li>
-        <li><a href="\schedules-info\index.php">Informações horario</a></li>
+        <li><a class="sidebar-link" href="\mainPage\index.php">Página Inicial</a></li>
+        <li><a class="sidebar-link" href="\schedules\index.php">Histórico</a></li>
+        <li><a class="sidebar-link" href="\schedules-info\index.php">Informações horário</a></li>
     </ul>
     </div>
     <div id="overlay" class="overlay" onclick="closeLoginPopup()"></div>
@@ -76,7 +76,7 @@ if (isset($_POST['logout'])) {
 
     <div class="container2">
         <div class="graph-image">
-            <img src="\assets\graph.jpg" alt="">
+            cu negro
         </div>
         <div class="schedules-buttons">
             <div class="scrollable-content">

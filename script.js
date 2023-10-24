@@ -39,22 +39,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// Adicione um evento de clique ao ícone de sanduíche para abrir o menu lateral
 document.getElementById("menu-icon").addEventListener("click", openSidebar);
 
-// Função para abrir o menu lateral
 function openSidebar() {
-    document.getElementById("sidebar").style.width = "250px"; // Largura do menu
+    document.getElementById("sidebar").style.width = "250px"; 
 }
 
-// Função para fechar o menu lateral
 function closeSidebar() {
     document.getElementById("sidebar").style.width = "0";
 }
 
-// Feche o menu lateral quando clicar em qualquer lugar fora dele
-window.addEventListener("click", function (event) {
-    if (event.target.id === "sidebar") {
+document.addEventListener("click", function (event) {
+    var sidebar = document.getElementById("sidebar");
+    var menuIcon = document.getElementById("menu-icon");
+
+    if (event.target !== sidebar && event.target !== menuIcon && !sidebar.contains(event.target)) {
         closeSidebar();
     }
 });

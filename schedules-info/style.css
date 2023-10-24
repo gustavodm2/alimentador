@@ -8,3 +8,56 @@ body {
     background-color: #f5f5f5;
 
 }
+
+.fed-schedules-text{
+    text-align: center;
+}
+  
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left; 
+}
+
+.card {
+    flex: 0 0 30%; 
+    max-width: 26vh; 
+    min-width: 26vh; 
+    border: 1px solid #ccc;
+    margin: 10px 5px;  
+    padding: 10px;
+    background-color: #f0f0f0;
+    box-sizing: border-box; 
+}
+
+.card h3 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.card p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.card-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    max-width: 40%;
+    float: left;
+    padding-left: 4rem;
+
+}
+
+.card-future-schedule-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    max-width: 40%;
+    padding-bottom: 1rem;
+    padding-left: 4rem;
+    padding-top: 1rem;
+}

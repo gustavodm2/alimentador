@@ -59,10 +59,15 @@ if (isset($_POST['logout'])) {
             <button class="submit-text" type="submit" method="post">Entrar</button>
             </div>
         </form>
-        <div id="fed-schedules" class="schedules">
-    </div>
         <div id="message"></div>
-    </div>
+        </div>
+        <h2 class="card-future-schedule-title">Horários programados</h2>
+        <div class="card-container2">
+        
+        <div class="card-container"></div>
+        </div>
+        </div>
+    
     </body>
     <script src="\script.js"></script>
     <script src="script.js"></script>

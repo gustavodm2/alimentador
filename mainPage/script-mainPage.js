@@ -1,5 +1,5 @@
 const scrollableContent = document.querySelector(".scrollable-content");
-
+const now = new Date();
 document.querySelector(".fa-plus").addEventListener("click", () => {
     const newTextbox = document.createElement("div");
     newTextbox.className = "textbox";
@@ -40,7 +40,11 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
     newTextbox.appendChild(submitButton);
 
     submitButton.addEventListener("click", () => {
-        if (dateInput.value && timeInput.value) {
+        const selectedDate = new Date(`${dateInput.value} ${timeInput.value}`);
+        
+        if (selectedDate <= now) {
+            alert("Horário deve ser maior que o atual.");
+        } else if (dateInput.value && timeInput.value) {
             const selectedDateTime = `${dateInput.value} ${timeInput.value}`;
             newTextbox.replaceWith(selectedDateTime);
             console.log(selectedDateTime);
@@ -48,8 +52,6 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
         }
     });
 });
-
-
 
 function alimentarAgora() {
     var xhr = new XMLHttpRequest();
@@ -59,11 +61,11 @@ function alimentarAgora() {
             alert("Horário alimentado com sucesso!");
             var horarioAtual = new Date().toLocaleTimeString();
             atualizarHorarioSchedules(horarioAtual);
-            
         }
     };
     xhr.send();
 }
+
 function inserirHorarioNoBanco(selectedDateTime) {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "insert_times2.php", true);
@@ -77,5 +79,3 @@ function inserirHorarioNoBanco(selectedDateTime) {
     const data = "data=" + encodeURIComponent(selectedDateTime);
     xhr.send(data);
 }
-
-

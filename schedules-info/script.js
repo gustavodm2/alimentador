@@ -1,7 +1,6 @@
 function mostrarHorariosSelecionados(times) {
-    const catalog = document.getElementById('fed-schedules');
-    catalog.innerHTML = '';
-
+    const catalog = document.querySelector('.card-container');
+    
     const now = new Date(); 
 
     times.sort((a, b) => new Date(b.data_hora) - new Date(a.data_hora));
@@ -9,7 +8,7 @@ function mostrarHorariosSelecionados(times) {
     times.forEach(time => {
         const dataHora = new Date(time.data_hora);
 
-        if (dataHora <= now) {
+        if (dataHora > now) { 
             const dia = dataHora.toLocaleDateString('pt-BR', { weekday: 'long' });
             const horario = dataHora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
@@ -30,6 +29,8 @@ function mostrarHorariosSelecionados(times) {
             card.appendChild(cardHorario);
 
             catalog.appendChild(card);
+        } else {
+            alert('cu negro');
         }
     });
 }
@@ -45,7 +46,7 @@ function removerHorariosPassados(times) {
     }
 }
 
-fetch('../schedules/times.php')
+fetch('/schedules/times.php')
     .then(response => response.json())
     .then(times => {
         console.log(times);

@@ -61,9 +61,11 @@ if (isset($_POST['logout'])) {
         </form>
         <div id="message"></div>
     </div>
+    
+    </div>
+
     <div class="card-container2">
     <div id="fed-schedules" class="card-container"></div>
-    </div>
     </div>
     <script src="script-schedules.js"></script>
     <script src="\script.js"></script>
