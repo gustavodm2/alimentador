@@ -23,6 +23,14 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
     newTextbox.appendChild(timeInput);
     newTextbox.appendChild(trashIcon);
 
+    // Crie um botão para definir a repetição diária
+    const repeatButton = document.createElement("button");
+    repeatButton.innerText = "Repetir Diariamente";
+    newTextbox.appendChild(repeatButton);
+
+    // Adicione um atributo de dados para armazenar a escolha do usuário
+    newTextbox.dataset.repeat = "false";
+
     scrollableContent.appendChild(newTextbox);
 
     trashIcon.addEventListener("click", () => {
@@ -48,7 +56,10 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
             const selectedDateTime = `${dateInput.value} ${timeInput.value}`;
             newTextbox.replaceWith(selectedDateTime);
             console.log(selectedDateTime);
-            inserirHorarioNoBanco(selectedDateTime);
+
+            // Armazene a escolha do usuário para a repetição diária
+            const repeatDaily = newTextbox.dataset.repeat === "true" ? "Sim" : "Não";
+            inserirHorarioNoBanco(selectedDateTime, repeatDaily);
 
             const popup2 = document.createElement("div");
             popup2.innerText = "Horário programado";
@@ -58,8 +69,17 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
             
             setTimeout(() => {
                 document.body.removeChild(popup2);
-            }, 2000); 
+            }, 2000);
         }
+    });
+
+    repeatButton.addEventListener("click", () => {
+        // Alterne a escolha do usuário (true/false) e atualize o atributo de dados
+        const currentRepeatValue = newTextbox.dataset.repeat;
+        newTextbox.dataset.repeat = currentRepeatValue === "true" ? "false" : "true";
+
+        // Atualize o texto do botão com base na escolha do usuário
+        repeatButton.innerText = newTextbox.dataset.repeat === "true" ? "Repetir Diariamente" : "Não Repetir Diariamente";
     });
 });
 
@@ -76,7 +96,7 @@ function alimentarAgora() {
     xhr.send();
 }
 
-function inserirHorarioNoBanco(selectedDateTime) {
+function inserirHorarioNoBanco(selectedDateTime, repeatDaily) {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "insert_times2.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -86,23 +106,6 @@ function inserirHorarioNoBanco(selectedDateTime) {
         }
     };
 
-    const data = "data=" + encodeURIComponent(selectedDateTime);
+    const data = "data=" + encodeURIComponent(selectedDateTime) + "&repeatDaily=" + encodeURIComponent(repeatDaily);
     xhr.send(data);
 }
-
-document.getElementById('add-alarm-button').addEventListener('click', function() {
-    const alarmTime = document.getElementById('alarm-time').value;
-    const repeatDaily = document.getElementById('repeat-daily').checked;
-
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "insert_alarm.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    xhr.send(`alarm-time=${alarmTime}&repeat-daily=${repeatDaily}`);
-
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            alert("Alarme adicionado com sucesso.");
-        }
-    };
-});

@@ -12,7 +12,7 @@ CREATE TABLE usuario(
 CREATE TABLE alarm (
     id SERIAL PRIMARY KEY,
     alarm_time TIME,
-    repeat_daily SMALLINT
+    repeat_daily BOOLEAN
 );
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
