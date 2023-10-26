@@ -1,5 +1,7 @@
 const scrollableContent = document.querySelector(".scrollable-content");
 const now = new Date();
+
+
 document.querySelector(".fa-plus").addEventListener("click", () => {
     const newTextbox = document.createElement("div");
     newTextbox.className = "textbox";
@@ -23,13 +25,14 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
     newTextbox.appendChild(timeInput);
     newTextbox.appendChild(trashIcon);
 
-    // Crie um botão para definir a repetição diária
-    const repeatButton = document.createElement("button");
-    repeatButton.innerText = "Repetir Diariamente";
-    newTextbox.appendChild(repeatButton);
+    const repeatCheckbox = document.createElement("input");
+    repeatCheckbox.type = "checkbox";
+    repeatCheckbox.id = "repeat-checkbox";
+    const repeatLabel = document.createElement("label");
+    repeatLabel.innerHTML = "Repetir diariamente";
 
-    // Adicione um atributo de dados para armazenar a escolha do usuário
-    newTextbox.dataset.repeat = "false";
+    newTextbox.appendChild(repeatLabel);
+    newTextbox.appendChild(repeatCheckbox);
 
     scrollableContent.appendChild(newTextbox);
 
@@ -57,29 +60,27 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
             newTextbox.replaceWith(selectedDateTime);
             console.log(selectedDateTime);
 
-            // Armazene a escolha do usuário para a repetição diária
-            const repeatDaily = newTextbox.dataset.repeat === "true" ? "Sim" : "Não";
-            inserirHorarioNoBanco(selectedDateTime, repeatDaily);
+            const repeatCheckboxValue = repeatCheckbox.checked;
+
+            inserirHorarioNoBanco(selectedDateTime, repeatCheckboxValue);
+
+            if (repeatCheckboxValue) {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const tomorrowDateTime = `${tomorrow.toISOString().split('T')[0]} ${timeInput.value}`;
+                inserirHorarioNoBanco(tomorrowDateTime, true);
+            }
 
             const popup2 = document.createElement("div");
             popup2.innerText = "Horário programado";
             popup2.className = "popup2";
-            
+
             document.body.appendChild(popup2);
-            
+
             setTimeout(() => {
                 document.body.removeChild(popup2);
             }, 2000);
         }
-    });
-
-    repeatButton.addEventListener("click", () => {
-        // Alterne a escolha do usuário (true/false) e atualize o atributo de dados
-        const currentRepeatValue = newTextbox.dataset.repeat;
-        newTextbox.dataset.repeat = currentRepeatValue === "true" ? "false" : "true";
-    
-        // Atualize o texto do botão com base na escolha do usuário
-        repeatButton.innerText = newTextbox.dataset.repeat === "true" ? "Repetir Diariamente" : "Não Repetir Diariamente";
     });
 });
 
@@ -96,7 +97,7 @@ function alimentarAgora() {
     xhr.send();
 }
 
-function inserirHorarioNoBanco(selectedDateTime, repeatDaily) {
+function inserirHorarioNoBanco(selectedDateTime, repeatCheckboxValue) {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "insert_times2.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -106,6 +107,8 @@ function inserirHorarioNoBanco(selectedDateTime, repeatDaily) {
         }
     };
 
-    const data = "data=" + encodeURIComponent(selectedDateTime) + "&repeatDaily=" + encodeURIComponent(repeatDaily);
-    xhr.send(data);
+    const data = "data=" + encodeURIComponent(selectedDateTime);
+    const repeat = "repeat=" + (repeatCheckboxValue ? 1 : 0); 
+    xhr.send(`${data}&${repeat}`);
 }
+

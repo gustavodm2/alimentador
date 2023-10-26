@@ -65,8 +65,7 @@ if (isset($_POST['logout'])) {
 
     <div class="container">
         <div class="feed-button-section">
-        <button class="feed-button" method="post" onclick="alimentarAgora()">Alimentar Agora</button>
-
+            <button class="feed-button" method="post" onclick="alimentarAgora()">Alimentar Agora</button>
         </div>
 
         <div class="schedules-section">
@@ -76,13 +75,11 @@ if (isset($_POST['logout'])) {
     </div>
 
     <div class="container2">
-   
-</div>
+        <div class="graph-image"></div>
         <div class="schedules-buttons">
-            <div class="scrollable-content">
-
-            </div>
+            <div class="scrollable-content"></div>
         </div>
+    </div>
         
     </div>
     <footer>

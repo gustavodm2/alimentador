@@ -1,18 +1,13 @@
 CREATE TABLE horarios_alimentados(
             id SERIAL PRIMARY KEY,
             data_hora timestamp,
+            repetir BOOLEAN
 );
 
 CREATE TABLE usuario(
             id SERIAL PRIMARY KEY,
 	        usuario VARCHAR(50),
 	        senha VARCHAR(999)
-);
-
-CREATE TABLE alarm (
-    id SERIAL PRIMARY KEY,
-    alarm_time TIME,
-    repeat_daily BOOLEAN
 );
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
