@@ -64,13 +64,6 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
 
             inserirHorarioNoBanco(selectedDateTime, repeatCheckboxValue);
 
-            if (repeatCheckboxValue) {
-                const tomorrow = new Date();
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                const tomorrowDateTime = `${tomorrow.toISOString().split('T')[0]} ${timeInput.value}`;
-                inserirHorarioNoBanco(tomorrowDateTime, true);
-            }
-
             const popup2 = document.createElement("div");
             popup2.innerText = "Horário programado";
             popup2.className = "popup2";
@@ -96,6 +89,70 @@ function alimentarAgora() {
     };
     xhr.send();
 }
+function areHoursAndMinutesEqual(date1, date2) {
+    return date1.getHours() === date2.getHours() && date1.getMinutes() === date2.getMinutes();
+}
+
+
+
+function dataHoraArrayInsert(times) {
+    const selectedTimes = [];
+    
+    times.forEach(time => {
+        const dataHora = new Date(time.data_hora);
+        
+        if (dataHora <= now) {
+            selectedTimes.push(time);
+        }
+    });
+    return selectedTimes;
+}
+
+var dataHoraArray = [];
+
+async function getTimes() {
+    try {
+        const response = await fetch('insert_array.php');
+        const times = await response.json();
+        const temp = dataHoraArrayInsert(times);
+        return temp;
+    } catch (error) {
+        console.error('Error:', error);
+        return [];
+    }
+}
+
+getTimes()
+.then(dataHoraArray => {
+    console.log(dataHoraArray);
+        setInterval(function() {
+            const dataHoraArray2 = dataHoraArray.map(item => {
+                return {
+                  data_hora: new Date(item.data_hora)
+                };
+              });
+
+            for (const {data_hora} of dataHoraArray2) {
+                console.log(data_hora.getHours());
+
+                let isFodase
+
+                // if(repetir){
+                //     isFodase = now.getHours() === data_hora.getHours() && now.getMinutes() === data_hora.getMinutes();
+                // }else{
+                //     //se ele nao repetir, verificar dia, mes e ano tbm
+                //     isFodase = now.getHours() === data_hora.getHours() && now.getMinutes() === data_hora.getMinutes();
+                // }
+
+                if (isFodase) {
+                    console.log("Current time matches a stored time:", horario);
+                }
+            }
+        }, 60 * 1000);
+    });
+    console.log(dataHoraArray);
+
+
 
 function inserirHorarioNoBanco(selectedDateTime, repeatCheckboxValue) {
     const xhr = new XMLHttpRequest();
@@ -110,5 +167,6 @@ function inserirHorarioNoBanco(selectedDateTime, repeatCheckboxValue) {
     const data = "data=" + encodeURIComponent(selectedDateTime);
     const repeat = "repeat=" + (repeatCheckboxValue ? 1 : 0); 
     xhr.send(`${data}&${repeat}`);
+
 }
 
