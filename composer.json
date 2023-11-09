@@ -1,0 +1,6 @@
+{
+    "require": {
+        "bluerhinos/phpmqtt": "*",
+        "php-mqtt/client": "^1.8"
+    }
+}

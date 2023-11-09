@@ -1,0 +1,12 @@
+node_modules
+docker
+test.js
+vendor
+terraform/files/chavinha.pem
+terraform/.terraform
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/secrets.tf
+security.php
+secrets.js
+mainPage/secrets.php

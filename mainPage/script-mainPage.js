@@ -1,3 +1,6 @@
+
+
+
 const scrollableContent = document.querySelector(".scrollable-content");
 const now = new Date();
 
@@ -78,6 +81,16 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
 });
 
 function alimentarAgora() {
+    fetch('mqtt.php')
+        .then(response => response.text())
+        .then(data => {
+            // Handle the response from the server
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('An error occurred:', error);
+        });
+        
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "insert_times.php", true);
     xhr.onreadystatechange = function () {
