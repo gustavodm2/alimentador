@@ -90,7 +90,6 @@ body {
     padding: 16px;
 }
 
-
 .submit-button {
     background-color: #0beb8a; 
     color: #000000; 
@@ -102,7 +101,7 @@ body {
   }
   
   .submit-button:hover {
-    background-color: #00a65e; /* Cor de fundo ao passar o mouse */
+    background-color: #00a65e; 
   }
 
   .popup2 {
@@ -118,4 +117,16 @@ body {
     z-index: 9999;
 }
 
-    
+.container-celulacarga{
+    display: flex;
+    min-height: 100%;
+    justify-content: center;
+
+    width: 100%;
+    float: left;
+}
+
+.peso-text{
+    bottom: 0;
+    width: 89%;
+}
