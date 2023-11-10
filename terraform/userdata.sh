@@ -11,8 +11,9 @@ apt install -y postgresql-client
 apt-get -y install php8.1-pgsql
 sudo apt install -y libapache2-mod-php
 apt install -y apache2
+apt install -y composer
 
- psql -h your_host -U your_username -d your_database -W
+psqlEndpoint=$(echo "$psqlEndpoint" | cut -d ':' -f 1)
 
 echo "${psqlPassword}" | psql -h "${psqlEndpoint}" -U "${psqlUser}" -W -d "${psqlName}" -f "/home/ubuntu/db.sql"
 
@@ -20,13 +21,15 @@ echo "${psqlPassword}" | psql -h "${psqlEndpoint}" -U "${psqlUser}" -W -d "${psq
 sudo systemctl start mosquitto
 sudo systemctl enable mosquitto
 
-mosquitto_passwd -b /etc/mosquitto/passwd_file.txt "${USERMQTT}" "${PASSWORDMQTT}"
 
 git clone "https://github.com/gustavodm2/alimentador.git" /alimentador
 
 mv -f "/home/ubuntu/apache2.conf" "/etc/apache2/apache2.conf"
 mv -f "/home/ubuntu/mosquitto.conf" "/etc/mosquitto/mosquitto.conf"
 mv -f "/home/ubuntu/000-default.conf" "/etc/apache2/sites-available/000-default.conf"
+
+touch /etc/mosquitto/passwd_file.txt
+mosquitto_passwd -b /etc/mosquitto/passwd_file.txt "${USERMQTT}" "${PASSWORDMQTT}"
 
 cat<< 'EOF' >/alimentador/security.php
 <?php
@@ -41,10 +44,13 @@ cat<< 'EOF' >/alimentador/mainPage/secrets.php
 <?php
 $username = "${USERMQTT}";
 $password = "${PASSWORDMQTT}";
-$server   = 'localhost';
+$server   = "localhost";
 $port     = 1883;
 ?>
 EOF
+
+cd /alimentador
+echo 'yes' | composer i 
 
 systemctl restart apache2
 systemctl restart mosquitto
