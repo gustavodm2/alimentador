@@ -7,6 +7,7 @@ terraform/.terraform
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 terraform/secrets.tf
+mainPage/secrets.php
 security.php
 secrets.js
-mainPage/secrets.php
+toDo.txt

@@ -59,7 +59,7 @@ resource "aws_instance" "principal" {
   vpc_security_group_ids = [aws_security_group.sg-principal.id]
   subnet_id              = aws_subnet.subnet-pub[0].id
 
-  user_data = templatefile("./userdata.sh", { psqlEndpoint = aws_db_instance.psql_database.endpoint, psqlUser = var.rds_user, psqlPassword = var.rds_password, psqlName = var.rds_db_name, USERMQTT = var.mqtt_user, PASSWORDMQTT = var.mqtt_password })
+  user_data = templatefile("./userdata.sh", { psqlEndpoint = split(":", aws_db_instance.psql_database.endpoint)[0], psqlUser = var.rds_user, psqlPassword = var.rds_password, psqlName = var.rds_db_name, USERMQTT = var.mqtt_user, PASSWORDMQTT = var.mqtt_password })
 
   provisioner "file" {
     source      = "files/db.sql"

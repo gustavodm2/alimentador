@@ -67,6 +67,9 @@ if (isset($_POST['logout'])) {
         <div class="feed-button-section">
             <button class="feed-button" method="post" onclick="alimentarAgora()">Alimentar Agora</button>
         </div>
+        <div id="messageContainer"> <?php 
+            include './mqttSub.php';
+        ?></div>
 
         <div class="schedules-section">
             <h1 class="schedules-text">Horários:</h1>
@@ -112,4 +115,5 @@ if (isset($_POST['logout'])) {
 </body>
 <script src="\script.js"></script>
 <script src="script-mainPage.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </html>

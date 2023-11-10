@@ -13,8 +13,6 @@ sudo apt install -y libapache2-mod-php
 apt install -y apache2
 apt install -y composer
 
-psqlEndpoint=$(echo "$psqlEndpoint" | cut -d ':' -f 1)
-
 echo "${psqlPassword}" | psql -h "${psqlEndpoint}" -U "${psqlUser}" -W -d "${psqlName}" -f "/home/ubuntu/db.sql"
 
 # Start Mosquitto service and enable it to start on boot
@@ -49,8 +47,12 @@ $port     = 1883;
 ?>
 EOF
 
+
+mkdir /home/ubuntu/composer_home
+export COMPOSER_HOME=/home/ubuntu/composer_home
+
 cd /alimentador
-echo 'yes' | composer i 
+composer install --no-interaction
 
 systemctl restart apache2
 systemctl restart mosquitto
