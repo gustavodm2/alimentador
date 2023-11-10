@@ -32,25 +32,4 @@ resource "aws_db_instance" "psql_database" {
   tags = {
     Name = "psql_database"
   }
-
-  provisioner "local-exec" {
-    command = "echo ${self.endpoint} | cut -d ':' -f 1"
-    
-    environment = {
-      TF_VAR_db_hostname = self.hostname
-    }
-  }
-
-  provisioner "local-exec" {
-    command = "terraform output -json db_hostname | jq -r .[0]"
-  }
 }
-
-output "db_hostname" {
-  value = local.db_hostname
-}
-
-locals {
-  db_hostname = null
-}
-

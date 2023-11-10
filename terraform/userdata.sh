@@ -37,5 +37,14 @@ $password = "${psqlPassword}";
 ?>
 EOF
 
+cat<< 'EOF' >/alimentador/mainPage/secrets.php
+<?php
+$username = "${USERMQTT}";
+$password = "${PASSWORDMQTT}";
+$server   = 'localhost';
+$port     = 1883;
+?>
+EOF
+
 systemctl restart apache2
 systemctl restart mosquitto

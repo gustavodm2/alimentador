@@ -3,5 +3,5 @@ output "ip_instance" {
 }
 
 output "rds_endpoint" {
-  value = aws_db_instance.psql_database.db_hostname
+  value = aws_db_instance.psql_database.endpoint
 }
