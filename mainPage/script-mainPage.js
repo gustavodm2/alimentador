@@ -60,7 +60,7 @@ document.querySelector(".fa-plus").addEventListener("click", () => {
             alert("Horário deve ser maior que o atual.");
         } else if (dateInput.value && timeInput.value) {
             const selectedDateTime = `${dateInput.value} ${timeInput.value}`;
-            newTextbox.replaceWith(selectedDateTime);
+            newTextbox.replaceWith();
             console.log(selectedDateTime);
 
             const repeatCheckboxValue = repeatCheckbox.checked;
