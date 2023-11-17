@@ -1,14 +1,14 @@
 function mostrarHorariosSelecionados(times) {
     const catalog = document.querySelector('.card-container');
-    
-    const now = new Date(); 
+
+    const now = new Date();
 
     times.sort((a, b) => new Date(b.data_hora) - new Date(a.data_hora));
 
     times.forEach(time => {
         const dataHora = new Date(time.data_hora);
 
-        if (dataHora > now) { 
+        if (dataHora > now) {
             const dia = dataHora.toLocaleDateString('pt-BR', { weekday: 'long' });
             const horario = dataHora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
@@ -24,14 +24,47 @@ function mostrarHorariosSelecionados(times) {
             const cardData = document.createElement('p');
             cardData.innerHTML = dataHora.toLocaleString('pt-BR').split(" ")[0];
 
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'delete-button';
+            deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+            deleteButton.addEventListener('click', () => {
+                // Chame a função para excluir o horário do banco de dados
+                excluirHorario(time.id); // Certifique-se de que a propriedade 'id' está disponível no objeto 'time'
+                // Remova o card da interface após excluir o horário
+                card.remove();
+            });
+
             card.appendChild(cardData);
             card.appendChild(cardDia);
             card.appendChild(cardHorario);
+            card.appendChild(deleteButton);
 
             catalog.appendChild(card);
         } else {
             alert('cu negro');
         }
+    });
+}
+
+// Adicione a função para excluir o horário do banco de dados
+function excluirHorario(id) {
+    fetch('/schedules-info/delete_time.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: id }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Horário excluído com sucesso:', data);
+        } else {
+            console.error('Erro ao excluir horário:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao excluir horário:', error);
     });
 }
 

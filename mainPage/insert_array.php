@@ -1,5 +1,5 @@
 <?php
-include '../connect.php'; // Include your PostgreSQL connection logic
+include '../connect.php'; 
 date_default_timezone_set('America/Sao_Paulo');
 
 if (isset($_SESSION['user_id'])){
