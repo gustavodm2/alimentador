@@ -1,15 +1,12 @@
 <?php
 require('./connectMQTT.php');
-printf("client connected\n");
 
-$mqtt->publish(
-    // topic
-    'arduino-data',
-    // payload
-    "1",
-    // qos
-    0,
-    // retain
-    true
-  );
+if ($mqtt->connect(true, NULL, $username, $password)) {
+	$mqtt->publish('arduino-data', '1', 0, false);
+	$mqtt->close();
+} else {
+    echo "Time out!\n";
+}
+
+printf("client connected\n");
 ?>

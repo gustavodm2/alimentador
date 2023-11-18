@@ -1,11 +1,9 @@
 #!/bin/bash
 echo "$nrconf{restart} = 'a';" >>/etc/needrestart/needrestart.conf
 
-# Update the package list and upgrade installed packages
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-# Install Mosquitto
 sudo apt-get install -y mosquitto mosquitto-clients
 apt install -y postgresql-client
 apt-get -y install php8.1-pgsql
@@ -15,7 +13,6 @@ apt install -y composer
 
 echo "${psqlPassword}" | psql -h "${psqlEndpoint}" -U "${psqlUser}" -W -d "${psqlName}" -f "/home/ubuntu/db.sql"
 
-# Start Mosquitto service and enable it to start on boot
 sudo systemctl start mosquitto
 sudo systemctl enable mosquitto
 

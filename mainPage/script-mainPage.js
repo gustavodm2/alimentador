@@ -183,3 +183,20 @@ function inserirHorarioNoBanco(selectedDateTime, repeatCheckboxValue) {
 
 }
 
+function getMQTTMessage() {
+    fetch('receiveMQTT.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log('Received message:', data);
+            document.getElementById('peso-text-value').innerText = data || '0';
+        })
+        .catch(error => {
+            console.error('An error occurred:', error);
+        });
+}
+setInterval(getMQTTMessage, 1000);

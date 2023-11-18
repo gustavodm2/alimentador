@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ec4da1c8273c663575319eccff49140",
+    "content-hash": "129b5014df1613d0ff12aad0df8efa9b",
     "packages": [
         {
             "name": "bluerhinos/phpmqtt",
-            "version": "1.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluerhinos/phpMQTT.git",
@@ -23,6 +23,7 @@
             "require": {
                 "php": ">=7.2"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -220,7 +221,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "bluerhinos/phpmqtt": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
