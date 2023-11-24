@@ -4,15 +4,11 @@
 #include "HX711.h"
 #include "secrets.h" // Neste arquivo estão coisas como senhas, ssid do wifi, ips e coisas que as pessoas nao devem ver
 
-// Portas para o modulo de carga
-#define  LOADCELL_DOUT_PIN  14    
-#define  LOADCELL_SCK_PIN  12  
-
 // variaveis para o modulo de carga
 const long LOADCELL_OFFSET = 50682624;
 const long LOADCELL_DIVIDER = 5895655;
 
-float calibration_factor = -50; // fator para calibragem
+float calibration_factor = 10000; // fator para calibragem
 float units;
 
 HX711 scale;
@@ -56,23 +52,37 @@ void loop() {
   // vai executar este codigo se receber a mesagem 1 e a carga for menor que 200g
   if (messageReceived == "1" && units < 200) {
     // este servo é "continuo", ele gira infinitamente, o write define a velocidade, entao para parar ele, temos que usar detach()
-    servo.attach(13);
+    servo.attach(servoPin);
     servo.write(0);
     delay(310);
     servo.detach();
-    delay(1000);
-    servo.attach(13);
+    while(units<200){
+      scale.set_scale(calibration_factor); //calibra a carga
+      // calculos para a carga
+      units = scale.get_units(), 10;
+      Serial.print("\nunits: ");
+      Serial.print(units);
+      delay(1000);
+    }
+    scale.tare();  //Reseta a escala para 0
+    // delay(1000);
+    servo.attach(servoPin);
     servo.write(0);
     delay(310);
     servo.detach();
   }
-  delay(3000);
+  delay(1000);
   messageReceived = "0";
   if (!client.connected()) {
     reconnect();
   }
   Serial.println("Valor da var: ");
   Serial.println(messageReceived);
+  char unitString[10];
+  dtostrf(units, 6, 2, unitString);
+
+  publishMessage(topicUnits, unitString);
+
   delay(1000);
   client.loop();
 }
@@ -109,6 +119,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
   messageReceived = message;
 }
 
+void publishMessage(const char* topic, const char* message) {
+  Serial.print("Publishing message to topic: ");
+  Serial.println(topic);
+  client.publish(topic, message);
+}
 
 // Conectar ao MQTT
 void reconnect() {
@@ -125,4 +140,3 @@ void reconnect() {
     }
   }
 }
-

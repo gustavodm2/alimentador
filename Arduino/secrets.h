@@ -12,3 +12,10 @@ const char* topic = "topic_mqtt";,
 const char* mqtt_username = "user_mqtt";
 
 const char* mqtt_password = "senha_mqtt";
+
+// Portas para o modulo de carga
+#define  LOADCELL_DOUT_PIN  14    
+#define  LOADCELL_SCK_PIN  12  
+
+// Porta para o servo
+const int servoPin = 13;
