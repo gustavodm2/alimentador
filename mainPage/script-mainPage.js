@@ -193,10 +193,11 @@ function getMQTTMessage() {
         })
         .then(data => {
             console.log('Received message:', data);
-            document.getElementById('peso-text-value').innerText = data || '0';
+            const pesoTextValue = document.getElementById('peso-text-value');
+            pesoTextValue.innerText = data || '0';
         })
         .catch(error => {
             console.error('An error occurred:', error);
         });
 }
-setInterval(getMQTTMessage, 1000);
+setInterval(getMQTTMessage, 50);
