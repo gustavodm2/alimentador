@@ -4,11 +4,7 @@
 #include "HX711.h"
 #include "secrets.h" // Neste arquivo estão coisas como senhas, ssid do wifi, ips e coisas que as pessoas nao devem ver
 
-// variaveis para o modulo de carga
-const long LOADCELL_OFFSET = 50682624;
-const long LOADCELL_DIVIDER = 5895655;
-
-float calibration_factor = 10000; // fator para calibragem
+float calibration_factor = 50; // fator para calibragem
 float units;
 
 HX711 scale;
@@ -21,6 +17,7 @@ String messageReceived = "0";
 void setup() {
   // Tipo um attach para a carga
   scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
+  scale.set_scale(calibration_factor); //calibra a carga
 
   scale.tare();  //Reseta a escala para 0
 
@@ -33,45 +30,61 @@ void setup() {
 }
 
 void loop() {
-  scale.set_scale(calibration_factor); //calibra a carga
+  // scale.power_up(); // LIGANDO O SENSOR
 
   // calculos para a carga
-  units = scale.get_units(), 10;
-  if (units < 0)
-  {
-    units = 0.00;
-  }
+  // units = scale.get_units(5);
+  // if (units < 0)
+  // {
+  //   units = 0.00;
+  // }
 
   // Prints para debug
-  Serial.print(units);
-  Serial.print(" units"); 
-  Serial.print(" calibration_factor: ");
-  Serial.print(calibration_factor);
-  Serial.println();
+  // Serial.print(units);
+  // Serial.print(" units"); 
+  // Serial.print(" calibration_factor: ");
+  // Serial.print(calibration_factor);
+  // Serial.println();
 
   // vai executar este codigo se receber a mesagem 1 e a carga for menor que 200g
-  if (messageReceived == "1" && units < 200) {
-    // este servo é "continuo", ele gira infinitamente, o write define a velocidade, entao para parar ele, temos que usar detach()
-    servo.attach(servoPin);
-    servo.write(0);
-    delay(310);
-    servo.detach();
-    while(units<200){
-      scale.set_scale(calibration_factor); //calibra a carga
-      // calculos para a carga
-      units = scale.get_units(), 10;
-      Serial.print("\nunits: ");
-      Serial.print(units);
-      delay(1000);
+  if (messageReceived == "1") {
+    scale.power_up(); // LIGANDO O SENSOR
+
+    // calculos para a carga
+    units = scale.get_units(5);
+    if (units < 0)
+    {
+      units = 0.00;
     }
-    scale.tare();  //Reseta a escala para 0
-    // delay(1000);
-    servo.attach(servoPin);
-    servo.write(0);
-    delay(310);
-    servo.detach();
+
+    // Prints para debug
+    Serial.print(units);
+    Serial.print(" units"); 
+    Serial.print(" calibration_factor: ");
+    Serial.print(calibration_factor);
+    Serial.println();
+    if(units < 200){
+      
+      // este servo é "continuo", ele gira infinitamente, o write define a velocidade, entao para parar ele, temos que usar detach()
+      servo.attach(servoPin);
+      servo.write(0);
+      delay(310);
+      servo.detach();
+      while(units<200){
+        units = scale.get_units(5);
+        Serial.print("\nunits: ");
+        Serial.print(units);
+        delay(1000);
+      }
+      scale.power_down(); // DESLIGANDO O SENSOR
+      // delay(1000);
+      servo.attach(servoPin);
+      servo.write(0);
+      delay(310);
+      servo.detach();
+    }
   }
-  delay(1000);
+  delay(500);
   messageReceived = "0";
   if (!client.connected()) {
     reconnect();
@@ -83,7 +96,7 @@ void loop() {
 
   publishMessage(topicUnits, unitString);
 
-  delay(1000);
+  delay(50);
   client.loop();
 }
 
