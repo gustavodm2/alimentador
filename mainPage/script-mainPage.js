@@ -194,7 +194,7 @@ function getMQTTMessage() {
         .then(data => {
             console.log('Received message:', data);
             const pesoTextValue = document.getElementById('peso-text-value');
-            pesoTextValue.innerText = data || '0';
+            pesoTextValue.innerText = data || '0.00';
         })
         .catch(error => {
             console.error('An error occurred:', error);

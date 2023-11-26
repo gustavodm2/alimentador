@@ -81,7 +81,7 @@ if (isset($_POST['logout'])) {
     <div class="container-celulacarga">
         <h2 class="peso-text">Peso Atual na balança: <br>
         <p id="peso-text-value">
-            0   
+            0.00
         </p>
         </h2>
     </div>
