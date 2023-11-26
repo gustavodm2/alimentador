@@ -118,11 +118,12 @@ body {
 }
 
 .container-celulacarga{
+    padding-left: 170px;
     display: flex;
     min-height: 100%;
     justify-content: center;
 
-    width: 100%;
+    width: 50%;
     float: left;
 }
 

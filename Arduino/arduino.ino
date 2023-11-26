@@ -4,7 +4,7 @@
 #include "HX711.h"
 #include "secrets.h" // Neste arquivo estão coisas como senhas, ssid do wifi, ips e coisas que as pessoas nao devem ver
 
-float calibration_factor = 50; // fator para calibragem
+float calibration_factor = 100; // fator para calibragem
 float units;
 
 HX711 scale;
