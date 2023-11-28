@@ -84,7 +84,6 @@ function alimentarAgora() {
     fetch('mqtt.php')
         .then(response => response.text())
         .then(data => {
-            // Handle the response from the server
             console.log(data);
         })
         .catch(error => {
@@ -149,18 +148,14 @@ getTimes()
             for (const {data_hora} of dataHoraArray2) {
                 console.log(data_hora.getHours());
 
-                let isFodase
-
-                // if(repetir){
-                //     isFodase = now.getHours() === data_hora.getHours() && now.getMinutes() === data_hora.getMinutes();
-                // }else{
-                //     //se ele nao repetir, verificar dia, mes e ano tbm
-                //     isFodase = now.getHours() === data_hora.getHours() && now.getMinutes() === data_hora.getMinutes();
-                // }
-
-                if (isFodase) {
-                    console.log("Current time matches a stored time:", horario);
-                }
+                fetch('mqtt.php')
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('An error occurred:', error);
+                });
             }
         }, 60 * 1000);
     });
@@ -225,4 +220,4 @@ function getMQTTMessage() {
             console.error('An error occurred:', error);
         });
 }
-setInterval(getMQTTMessage, 50);
+setInterval(getMQTTMessage, 500);

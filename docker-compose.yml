@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres-db123123
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: alimentador2
+    ports:
+      - "5432:5432"
+    networks:
+      - my-network
+      
+  composer:
+    image: composer
+    container_name: composer-container
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["install", "--ignore-platform-reqs", "--no-scripts"]
+    networks:
+      - my-network
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-php-app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./php.ini:/usr/local/etc/php/conf.d/php.ini
+    depends_on:
+      - db
+      - composer
+    networks:
+    - my-network
+
+  mosquitto-server:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto-container
+    ports:
+      - "1883:1883"
+    networks:
+      - my-network
+    # volumes:
+    #   - ./mainPage/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    # privileged: true  # Add this line temporarily for debugging
+
+
+networks:
+  my-network:
