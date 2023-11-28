@@ -67,9 +67,6 @@ if (isset($_POST['logout'])) {
         <div class="feed-button-section">
             <button class="feed-button" method="post" onclick="alimentarAgora()">Alimentar Agora</button>
         </div>
-        <div id="messageContainer"> <?php 
-            include './mqttSub.php';
-        ?></div>
 
         <div class="schedules-section">
             <h1 class="schedules-text">Horários:</h1>
@@ -79,11 +76,19 @@ if (isset($_POST['logout'])) {
 
     <div class="container2">
     <div class="container-celulacarga">
-        <h2 class="peso-text">Peso Atual na balança: <br>
-        <p id="peso-text-value">
-            0.00
-        </p>
-        </h2>
+        <button class="weight-button" onclick="openWeightPopup()">
+            Verificar peso atual na balança
+        </button>
+        <div id="overlayWeight" class="overlay" onclick="closeWeightPopup()"></div>
+        <div id="weightPopup" class="popup">
+            <span class="close-button" onclick="closeWeightPopup()">&#10006;</span>
+                <h2 class="peso-text">Peso Atual na balança: <br>
+                <p id="peso-text-value">
+                    0.00
+                </p>
+            <div id="message"></div>
+        </div>
+
     </div>
         <div class="schedules-buttons">
             <div class="scrollable-content"></div>

@@ -2,5 +2,8 @@
     "require": {
         "bluerhinos/phpmqtt": "@dev",
         "php-mqtt/client": "^1.8"
+    },
+    "require-dev": {
+        "symfony/web-server-bundle": "^4.4"
     }
 }

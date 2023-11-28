@@ -102,6 +102,7 @@ function alimentarAgora() {
     };
     xhr.send();
 }
+
 function areHoursAndMinutesEqual(date1, date2) {
     return date1.getHours() === date2.getHours() && date1.getMinutes() === date2.getMinutes();
 }
@@ -165,6 +166,30 @@ getTimes()
     });
     console.log(dataHoraArray);
 
+function openWeightPopup() {
+    document.getElementById("overlayWeight").style.display = "block";
+    document.getElementById("weightPopup").style.display = "block";
+    fetch('mqttIsSendUnits.php')
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('An error occurred:', error);
+        });
+}
+function closeWeightPopup() {
+    document.getElementById("overlayWeight").style.display = "none";
+    document.getElementById("weightPopup").style.display = "none";
+    fetch('mqttIsSendUnitsStop.php')
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('An error occurred:', error);
+        });
+}
 
 
 function inserirHorarioNoBanco(selectedDateTime, repeatCheckboxValue) {

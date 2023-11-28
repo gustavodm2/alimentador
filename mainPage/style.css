@@ -37,6 +37,19 @@ body {
     
 }
 
+.weight-button{
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    background-color: #0beb8a;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 28px;
+    height:25%;
+    width: 46%;
+    cursor: pointer;
+}
+
 
 .schedules-section{
     display: flex;
@@ -118,7 +131,6 @@ body {
 }
 
 .container-celulacarga{
-    padding-left: 170px;
     display: flex;
     min-height: 100%;
     justify-content: center;
