@@ -42,22 +42,29 @@ body {
 
 .card-container2 {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: left;
     align-items: center;
-    width: 50%;
-    max-width: 50%;
+    width: 45%;
+    max-width: 45%;
     float: left;
-    padding-left: 4rem;
-
+    padding-left: 70px;
+    padding-right: 70px;
 }
 
 .card-future-schedule-title{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40%;
-    max-width: 40%;
+    width: 50%;
+    max-width: 50%;
     padding-bottom: 1rem;
-    padding-left: 4rem;
     padding-top: 1rem;
 }
+
+.container-titles{
+    display: flex;
+    justify-content: space-between;
+}
+
+

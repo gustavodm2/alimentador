@@ -57,7 +57,7 @@ if (isset($_POST['logout'])) {
             <input class="password-text-box" type="password" id="password" name="password">
             <br>
             <div class="submit-text-section">
-            <button class="submit-text" type="submit" method="post">Entrar</button>
+            <button  class="submit-text" type="submit" method="post">Entrar</button>
             </div>
         </form>
         <div id="message"></div>

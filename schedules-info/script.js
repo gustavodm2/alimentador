@@ -1,5 +1,5 @@
 function mostrarHorariosSelecionados(times) {
-    const catalog = document.querySelector('.card-container');
+    
 
     const now = new Date();
 
@@ -7,6 +7,7 @@ function mostrarHorariosSelecionados(times) {
 
     times.forEach(time => {
         const dataHora = new Date(time.data_hora);
+        const repetir = time.repetir;
 
         if (dataHora > now) {
             const dia = dataHora.toLocaleDateString('pt-BR', { weekday: 'long' });
@@ -24,21 +25,35 @@ function mostrarHorariosSelecionados(times) {
             const cardData = document.createElement('p');
             cardData.innerHTML = dataHora.toLocaleString('pt-BR').split(" ")[0];
 
+            const cardRep = document.createElement('p');
+            cardRep.innerHTML = repetir;
+
             const deleteButton = document.createElement('button');
             deleteButton.className = 'delete-button';
             deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
             deleteButton.addEventListener('click', () => {
-                // Chame a função para excluir o horário do banco de dados
-                excluirHorario(time.id); // Certifique-se de que a propriedade 'id' está disponível no objeto 'time'
-                // Remova o card da interface após excluir o horário
+          
+                excluirHorario(time.id); 
+          
                 card.remove();
             });
-
+            if(!repetir){
             card.appendChild(cardData);
             card.appendChild(cardDia);
+        }   
             card.appendChild(cardHorario);
             card.appendChild(deleteButton);
+            
 
+            let catalog;
+            if(repetir){
+                
+                catalog = document.querySelector('.card-container');
+                cardHorario.style.fontSize = '30px';
+
+            } else {
+                catalog = document.querySelector('.card-container2');
+            }
             catalog.appendChild(card);
         } else {
             alert('cu negro');
@@ -46,7 +61,6 @@ function mostrarHorariosSelecionados(times) {
     });
 }
 
-// Adicione a função para excluir o horário do banco de dados
 function excluirHorario(id) {
     fetch('/schedules-info/delete_time.php', {
         method: 'POST',
