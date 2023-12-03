@@ -1,6 +1,3 @@
-
-
-
 const scrollableContent = document.querySelector(".scrollable-content");
 const now = new Date();
 
@@ -135,31 +132,55 @@ async function getTimes() {
     }
 }
 
-getTimes()
-.then(dataHoraArray => {
+getTimes().then(dataHoraArray => {
     console.log(dataHoraArray);
-        setInterval(function() {
-            const dataHoraArray2 = dataHoraArray.map(item => {
-                return {
-                  data_hora: new Date(item.data_hora)
-                };
-              });
 
-            for (const {data_hora} of dataHoraArray2) {
-                console.log(data_hora.getHours());
+    setInterval(async function () {
+        try {
+            const response = await fetch('../schedules/times.php');
+            const times = await response.json();
 
-                fetch('mqtt.php')
-                .then(response => response.text())
-                .then(data => {
-                    console.log(data);
-                })
-                .catch(error => {
-                    console.error('An error occurred:', error);
-                });
+            // Get the current time
+            const now = new Date();
+            console.log(now)
+            const nowPlusOneMinute = new Date(now.getTime() - 1 * 60000);
+            console.log(nowPlusOneMinute)
+
+            // Filter the array for dates greater than the current time
+            const dataHoraArray3 = times
+                .map(item => ({
+                    data_hora: new Date(item.data_hora)
+                }))
+                .filter(item => item.data_hora > nowPlusOneMinute);
+
+            console.log(dataHoraArray3);
+
+            for (const { data_hora } of dataHoraArray3) {
+                console.log('Current time and data_hora ', now.getHours(), now.getMinutes(), data_hora.getHours(), data_hora.getMinutes());
+                if (areHoursAndMinutesEqual(now, data_hora)) {
+                    console.log('Current time matches the scheduled time ', now, data_hora);
+                    const mqttResponse = await fetch('mqtt.php');
+                    const mqttData = await mqttResponse.text();
+                    console.log(mqttData);
+                    console.log("mqtt");
+                }
             }
-        }, 60 * 1000);
-    });
-    console.log(dataHoraArray);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    }, 60000);
+});
+
+
+async function sendMessage() {
+    try {
+        const response = await fetch('mqtt.php');
+        const data = await response.text();
+        console.log(data);
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
+}
 
 function openWeightPopup() {
     document.getElementById("overlayWeight").style.display = "block";
@@ -212,7 +233,6 @@ function getMQTTMessage() {
             return response.text();
         })
         .then(data => {
-            console.log('Received message:', data);
             const pesoTextValue = document.getElementById('peso-text-value');
             pesoTextValue.innerText = data || '0.00';
         })

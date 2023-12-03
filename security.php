@@ -1,6 +1,6 @@
 <?php
-$host = "localhost";
+$host = "db";
 $database = "alimentador2";
 $username = "postgres";
-$password = "1234";
+$password = "123";
 ?>
