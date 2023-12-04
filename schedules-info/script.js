@@ -56,7 +56,6 @@ function mostrarHorariosSelecionados(times) {
             }
             catalog.appendChild(card);
         } else {
-            alert('cu negro');
         }
     });
 }

@@ -7,7 +7,6 @@ try {
     $query = "INSERT INTO horarios_alimentados (data_hora, repetir) VALUES (?, false)";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$data_hora]);
-    echo "Horário alimentado com sucesso!";
 } catch (PDOException $e) {
     echo "Erro ao inserir dados: " . $e->getMessage();
 }

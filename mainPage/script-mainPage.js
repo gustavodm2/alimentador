@@ -91,7 +91,7 @@ function alimentarAgora() {
     xhr.open("POST", "insert_times.php", true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            alert("Horário alimentado com sucesso!");
+            console.log("alimentado com sucesso")
             var horarioAtual = new Date().toLocaleTimeString();
             atualizarHorarioSchedules(horarioAtual);
         }
