@@ -4,7 +4,7 @@
 #include "HX711.h"
 #include "secrets.h" // Neste arquivo estão coisas como senhas, ssid do wifi, ips e coisas que as pessoas nao devem ver
 
-float calibration_factor = 100; // fator para calibragem
+float calibration_factor = 700; // fator para calibragem
 float units;
 
 HX711 scale;
@@ -14,6 +14,7 @@ PubSubClient client(espClient);
 Servo servo;
 
 String messageReceived = "0";
+String messageReceivedIsSendUnits = "0";
 void setup() {
   // Tipo um attach para a carga
   scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
@@ -46,16 +47,32 @@ void loop() {
   // Serial.print(calibration_factor);
   // Serial.println();
 
+  if(messageReceivedIsSendUnits == "1"){
+    scale.power_up();
+    units = scale.get_units(5);   
+    if (units < 70)
+    {
+      units = 0.00;
+    }
+    Serial.print(units);
+    Serial.print(" units"); 
+    char unitString[10];
+    dtostrf(units, 6, 2, unitString);
+
+    publishMessage(topicUnits, unitString);
+    scale.power_down(); // DESLIGANDO O SENSOR
+  }
+
   // vai executar este codigo se receber a mesagem 1 e a carga for menor que 200g
   if (messageReceived == "1") {
     scale.power_up(); // LIGANDO O SENSOR
 
     // calculos para a carga
     units = scale.get_units(5);
-    if (units < 0)
-    {
-      units = 0.00;
-    }
+    // if (units < 0)
+    // {
+    //   units = 0.00;
+    // }
 
     // Prints para debug
     Serial.print(units);
@@ -67,8 +84,8 @@ void loop() {
       
       // este servo é "continuo", ele gira infinitamente, o write define a velocidade, entao para parar ele, temos que usar detach()
       servo.attach(servoPin);
-      servo.write(0);
-      delay(310);
+      servo.write(1);
+      delay(150);
       servo.detach();
       while(units<200){
         units = scale.get_units(5);
@@ -79,23 +96,16 @@ void loop() {
       scale.power_down(); // DESLIGANDO O SENSOR
       // delay(1000);
       servo.attach(servoPin);
-      servo.write(0);
-      delay(310);
+      servo.write(1);
+      delay(250);
       servo.detach();
     }
+    delay(500);
+    messageReceived = "0";
   }
-  delay(500);
-  messageReceived = "0";
   if (!client.connected()) {
     reconnect();
   }
-  Serial.println("Valor da var: ");
-  Serial.println(messageReceived);
-  char unitString[10];
-  dtostrf(units, 6, 2, unitString);
-
-  publishMessage(topicUnits, unitString);
-
   delay(50);
   client.loop();
 }
@@ -129,7 +139,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   }
 
   Serial.println("Message: " + message);
-  messageReceived = message;
+  if (strcmp(topic, "arduino-data") == 0) {
+    messageReceived = message;
+  }else if (strcmp(topic, topicIsSendUnits) == 0){
+    messageReceivedIsSendUnits = message;
+  }
+
 }
 
 void publishMessage(const char* topic, const char* message) {
@@ -145,6 +160,7 @@ void reconnect() {
     if (client.connect(clientId, mqtt_username, mqtt_password)) {
       Serial.println("conectado");
       client.subscribe(topic);
+      client.subscribe(topicIsSendUnits);
     } else {
       Serial.print("falhou, rc=");
       Serial.print(client.state());
